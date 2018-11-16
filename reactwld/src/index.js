@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 //import './index.css';
+//import './assets/wldbase.css'
+//import './assets/credit.css'
 //import App from './App';
 import { HashRouter as Router, Route, Redirect } from "react-router-dom";
 import axios from 'axios';
@@ -9,7 +11,7 @@ import qs from 'qs'
 import {Provider, connect} from 'react-redux';
 import {createStore} from 'redux';
 
-
+import Gcredit from './pages/Gcredit/Gcredit';
 
 
 import * as serviceWorker from './serviceWorker';
@@ -44,14 +46,12 @@ ReactDOM.render(
 		<Router>
 			<div>
 				
-				
+				<Route path="/credit/" component={Gcredit} />
 				
 			</div>
 		</Router >
 	</Provider>
 	, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+
 serviceWorker.unregister();
