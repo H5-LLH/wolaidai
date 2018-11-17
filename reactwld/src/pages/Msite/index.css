@@ -138,3 +138,31 @@
   vertical-align: bottom;
   transition: all 0.5s ease-in-out;
 }
+.fadeInRight1 {
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight;
+  -webkit-animation-duration: .4s;
+  animation-duration: .4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+.transform1{animation-delay: 0s;}
+.transform2{animation-delay: 0.05s;}
+.transform3{animation-delay: 0.1s;}
+.transform4{animation-delay: 0.15s;}
+.transform5{animation-delay: 0.2s;}
+.transform6{animation-delay: 0.25s;}
+.transform7{animation-delay: 0.3s;}
+.transform8{animation-delay: 0.35s;}
+.transform9{animation-delay: 0.4s;}
+
+.ant-carousel .slick-slide {
+   position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.ant-carousel .slick-slide h3 {
+ 
+}
