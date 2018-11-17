@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 //import './index.css';
-//import App from './App';
+import Msite from './pages/Msite/Msite.jsx';
 import { HashRouter as Router, Route, Redirect } from "react-router-dom";
 import axios from 'axios';
 import qs from 'qs'
@@ -43,8 +43,9 @@ ReactDOM.render(
 	<Provider store={store}>
 		<Router>
 			<div>
-				
-				
+			
+				<Route path="/msite/" component={Msite} />
+        <Redirect to="/msite/"/>
 				
 			</div>
 		</Router >
