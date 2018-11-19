@@ -20,7 +20,7 @@ class Gcredit extends Component {
 			pickTab:0,
 			tabs:""
 		};
-	}
+	}   
 	
 	render() {
 		return(
