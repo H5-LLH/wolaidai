@@ -9,9 +9,11 @@ class GDimgtop extends Component {
 		super(props);
 		this.state = {
 			pickTab: 0,
-			tabs: ""
+			ImgArr: ""    //props里面的topimgArr就是我想要的图片Arr函数
 		};
 	}
+
+
 
 	render() {
 		return(
@@ -19,7 +21,7 @@ class GDimgtop extends Component {
 			<div className="slider am-carousel">
 							<div className="slider-frame slider-framee">
 								<ul className="slider-list slider-listt">
-									<a className="slider-debb"><img src="https://welab.oss-cn-shenzhen.aliyuncs.com/production/api/rocket2/public/system/documents/44/ef/01ea6c57891fe608c0cb049c88d0b3527919/spu_primary_original.jpeg?Expires=1542527829&amp;OSSAccessKeyId=LTAIZeL07SeAtFXG&amp;Signature=NiYdUg4xzOWIcW7KhIsPmC2teOY%3D" /></a>
+									<a className="slider-debb"><img src={this.props.topimg.topimgUrl} /></a>
 								</ul>
 							</div>
 							<div className="slider-decorator-0 slider-decc">
@@ -29,7 +31,7 @@ class GDimgtop extends Component {
 							</div>
 						</div>
 						<div className="gap-20"></div>
-						<span className="good-title">OPPO Find X曲面全景屏手机</span>
+						<span className="good-title">{this.props.topimg.topimgName}</span>
 						<div className="good-rent">
 							<div className="good-rent-price"><span className="good-currency">￥</span><span className="good-amount">8.9/日</span><span><span className="good-month line-through">月供￥369</span><span className="good-month red">月供￥269.00</span></span>
 							</div>

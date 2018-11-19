@@ -15,17 +15,52 @@ class Gdetail extends Component {
 		super(props);
 		this.state = {
 			pickTab: 0,
-			tabs: ""
+			tabs: "",
+			detailObj:"",
+			topimg:"",
+			tabsImg:"",
+			tabsImgcs:"",
+			tabsImgfw:""
 		};
+	}
+
+	loadMore() {
+		//		let postData = React.qs.stringify({
+		//					page: 4,
+		//					limit: 10
+		//				});
+		React.axios({
+			method: 'get',
+			url: "https://mf.wolaidai.com/lease/api/v1/goods/106/detail"
+		}).then((response) => {
+			console.log(response.data.result);
+			
+			this.setState({
+				
+				detailObj: response.data.result,
+				topimg:response.data.result.spuDocument.spuPrimarys[0].documentUrl,
+				tabsImg:response.data.result.spuDocument.spuDetails,
+				tabsImgcs:response.data.result.spuDocument.spuParams[0],
+				tabsImgfw:response.data.result.spuDocument.leaseExplanations[0]
+				
+			})
+
+		}).catch((error) => {
+			console.log(error)
+		})
+	}
+	//react的生命周期
+	componentDidMount() {
+		this.loadMore();
 	}
 
 	render() {
 		return(
 			<div className="route-container">
 				<div className="good-container">
-					<GDimgtop />
+					<GDimgtop topimg={{topimgUrl:this.state.topimg,topimgName:this.state.detailObj.spuName}} />
 					<GDservice />
-					<GDtabs />
+					<GDtabs tabsimg={{imgjs:this.state.tabsImg,imgcs:this.state.tabsImgcs,imgfw:this.state.tabsImgfw}} />
 					<GDsummary />
 				</div>
 			</div>
