@@ -31,12 +31,31 @@ class GDimgtop extends Component {
 							</div>
 						</div>
 						<div className="gap-20"></div>
-						<span className="good-title">{this.props.topimg.topimgName}</span>
+						<span className="good-title">{this.props.topimg.topimgName.spuName}</span>
 						<div className="good-rent">
-							<div className="good-rent-price"><span className="good-currency">￥</span><span className="good-amount">8.9/日</span><span><span className="good-month line-through">月供￥369</span><span className="good-month red">月供￥269.00</span></span>
+							<div className="good-rent-price"><span className="good-currency">￥</span>
+									<span className="good-amount">{
+										(()=>{
+											//取一位小数，不四舍五入
+											return (Math.floor((this.props.topimg.topimgName.rent/30)*10)/10)
+										})()
+									}/日</span>
+									<span>
+							<span className="good-month line-through">月供￥{this.props.topimg.topimgName.rent+100}</span>
+							<span className="good-month red">月供￥{
+									(()=>{
+										return (`${this.props.topimg.topimgName.rent}.00`)
+									})()
+								}</span></span>
 							</div>
 						</div>
-						<div className="good-price"><span className="good-offical">官网售价</span><span className="good-currency">￥</span><span className="good-amount">4,999.00</span></div>
+						<div className="good-price"><span className="good-offical">官网售价</span>
+							<span className="good-currency">￥</span>
+							<span className="good-amount">{
+								(()=>{
+									return (`${this.props.topimg.topPrice}.00`)
+								})()
+							}</span></div>
 						<div className="line"></div>
 			</div>
 		)

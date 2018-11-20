@@ -8,11 +8,125 @@ class GDsummary extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			pickTab: 0,
-			tabs: ""
+			SelectedBox:false,
+			boxindex:"",
+			checkBox:{
+				rentTerm: "",
+				内存: "",
+				租赁形式: "租完即送",
+				颜色: ""
+			},
+			changeRent:"",
+			showSummary:false
 		};
 	}
+	//自定义单选框，通过操作数组获得==========================
+	clickwww(ii,num){
 
+		if(this.props.summaryObj!==undefined){
+			this.props.summaryObj[num].attributeOptionsList.map((item,index)=>{
+				if(index===ii){
+					this.props.summaryObj[num].attributeOptionsList[ii].showww = !this.props.summaryObj[num].attributeOptionsList[ii].showww;
+					//单选，点击添加数组。绑定显示
+					//点击颜色选项时，改变对象
+					if(num===0 && this.props.summaryObj[0].attributeOptionsList[ii].showww){
+						this.setState({
+							checkBox:{
+								rentTerm:this.state.checkBox.rentTerm,
+								内存: this.state.checkBox["内存"],
+								租赁形式: this.state.checkBox["租赁形式"],
+								颜色:this.props.summaryObj[0].attributeOptionsList[ii].attributeValDesc
+							}
+						});
+						
+						//console.log(this.props.summaryObj[0].attributeOptionsList[ii].attributeValDesc)
+					}else if(num===0 && !this.props.summaryObj[0].attributeOptionsList[ii].showww){
+						this.setState({
+							checkBox:{
+								rentTerm:this.state.checkBox.rentTerm,
+								内存: this.state.checkBox["内存"],
+								租赁形式: this.state.checkBox["租赁形式"],
+								颜色:""
+							}
+						})
+					}
+					//点击内存选项时，改变对象
+					if(num===1 && this.props.summaryObj[1].attributeOptionsList[ii].showww){
+						this.setState({
+							checkBox:{
+								rentTerm:this.state.checkBox.rentTerm,
+								内存:this.props.summaryObj[1].attributeOptionsList[ii].attributeValDesc,
+								租赁形式: this.state.checkBox["租赁形式"],
+								颜色:this.state.checkBox["颜色"]
+							}
+						})
+						//console.log(this.props.summaryObj[1].attributeOptionsList[ii].attributeValDesc)
+					}else if(num===1 && !this.props.summaryObj[1].attributeOptionsList[ii].showww){
+						this.setState({
+							checkBox:{
+								内存:""
+							}
+						})
+					}
+					//点击租期选项时，改变对象
+					if(num===2 && this.props.summaryObj[2].attributeOptionsList[ii].showww){
+						this.setState({
+							checkBox:{
+								rentTerm:this.props.summaryObj[2].attributeOptionsList[ii].attributeVal,
+								内存: this.state.checkBox["内存"],
+								租赁形式: this.state.checkBox["租赁形式"],
+								颜色:this.state.checkBox["颜色"]
+							}
+						})
+						//console.log(this.props.summaryObj[2].attributeOptionsList[ii].attributeValDesc)
+					}else if(num===2 && !this.props.summaryObj[2].attributeOptionsList[ii].showww){
+						this.setState({
+							checkBox:{
+								rentTerm:"",
+								内存: this.state.checkBox["内存"],
+								租赁形式: this.state.checkBox["租赁形式"],
+								颜色:this.state.checkBox["颜色"]
+							}
+						})
+					}
+					
+	
+				}
+				else{//点击单选的效果。操作数组为先
+					this.props.summaryObj[num].attributeOptionsList[index].showww = false;	
+				}
+			})
+			//强制刷新操作
+			this.setState({
+				SelectedBox:!this.state.SelectedBox,
+				boxindex:ii
+			})
+		}
+		
+		
+	}
+	
+	//封装一个函数。用来比较两个对象是否 相等================
+	EqualObj(){
+		let b = this.props.skus;
+		b.map((item,index)=>{
+			if(item.attributeOptions["颜色"]===this.state.checkBox["颜色"] && item.attributeOptions["内存"]===this.state.checkBox["内存"] && item.attributeOptions.rentTerm===this.state.checkBox.rentTerm){
+				this.setState({
+					changeRent:item
+				})
+			}
+			
+		})
+	}
+
+	//显示，隐藏条件选择框=============================
+	hiddenCar(){
+		this.setState({
+			showSummary:!this.state.showSummary
+		})
+	}
+	
+	//==============================================JSX分隔线=============================
 	render() {
 		return(
 			<div>
@@ -22,38 +136,87 @@ class GDsummary extends Component {
 						首页
 					</div>
 					<button className="good-bargain">找人帮砍-￥200</button>
-					<button className="good-check double_11">立即拥有</button>
+					<button className="good-check double_11" onClick={this.hiddenCar.bind(this)}>立即拥有</button>
 				</div>
 				
-				<div className="modal-container hidden">
-						<div className="modal-content checklist-container"><button className="checklist-close">✕</button>
+				<div className={this.state.showSummary? 'modal-container' : 'modal-container hidden'} >
+						<div className="modal-content checklist-container"><button className="checklist-close" onClick={this.hiddenCar.bind(this)}>✕</button>
 							<div className="checklist-overview">
-							<img className="checklist-thumbnail" src="https://welab.oss-cn-shenzhen.aliyuncs.com/production/api/rocket2/public/system/documents/44/ef/01ea6c57891fe608c0cb049c88d0b3527919/spu_primary_original.jpeg?Expires=1542530537&amp;OSSAccessKeyId=LTAIZeL07SeAtFXG&amp;Signature=4vybO8U6yD/qvcUex%2BvC645UYe0%3D" alt="" />
-								<div className="checklist-numbers"><span>￥269.00</span><span>库存98件</span>
-									<div>已选:“租完即送”</div>
+							<img className="checklist-thumbnail" src={this.props.showImg} alt="" />
+								<div className="checklist-numbers">
+								<span>￥{
+									(()=>{
+										if(this.state.changeRent==""){
+										return ("269.00")
+									}else{
+										return this.state.changeRent.rent
+									}
+									})()
+									
+								}</span>
+								<span>库存{
+									(()=>{
+										if(this.state.changeRent==""){
+										return ("98")
+									}else{
+										return this.state.changeRent.stockNum
+									}
+									})()
+									
+								}件</span>
 								</div>
 						</div>
 							<ul className="checklist-plist" style={{maxHeight: "617px"}}>
 								<li className="checklist-pitem">颜色
 									<div>
-									<button className="checklist-option-false ">冰珀蓝</button>
-									<button className="checklist-option-false ">波尔多红</button>
+									{
+										(()=>{
+											if(this.props.summaryObj!==undefined){
+												return this.props.summaryObj[0].attributeOptionsList.map((item,index)=>{
+													return (
+														<button key={index} onClick={this.clickwww.bind(this,index,0)} className={item.showww? 'checklist-option-true' : 'checklist-option-false'}>{item.attributeVal}</button>
+													)
+												})
+											}
+											
+										})()
+									}
 									</div>
 								</li>
 								<li className="checklist-pitem">内存
 									<div>
-									<button className="checklist-option-false ">256G</button>
-									<button className="checklist-option-false ">128G</button>
+									{
+										(()=>{
+											if(this.props.summaryObj!==undefined){
+												return this.props.summaryObj[1].attributeOptionsList.map((item,index)=>{
+													return (
+														<button className={item.showww? 'checklist-option-true' : 'checklist-option-false'} key={index} onClick={this.clickwww.bind(this,index,1)}>{item.attributeVal}</button>
+													)
+												})
+											}
+											
+										})()
+									}
 									</div>
 								</li>
 								<li className="checklist-pitem">租期
 									<div>
-									<button className="checklist-option-false ">24个月租满即送</button>
-									<button className="checklist-option-false ">18个月租满即送</button>
+										{
+										(()=>{
+											if(this.props.summaryObj!==undefined){
+												return this.props.summaryObj[2].attributeOptionsList.map((item,index)=>{
+													return (
+														<button className={item.showww? 'checklist-option-true' : 'checklist-option-false'} key={index} onClick={this.clickwww.bind(this,index,2)}>{item.attributeValDesc}</button>
+													)
+												})
+											}
+											
+										})()
+									}
 									</div>
 								</li>
 								<li className="checklist-pitem">租赁形式
-									<div><button className="checklist-option-true ">租完即送</button></div>
+									<div><button className="checklist-option-true" onClick={this.EqualObj.bind(this)}>租完即送</button></div>
 								</li>
 								<li className="checklist-pitem">增值服务
 									<div className="checklist-safe">
