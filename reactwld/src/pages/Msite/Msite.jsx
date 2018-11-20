@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 import './index.css';
 import './common.css';
 import { Carousel } from 'antd';
+import { Link } from "react-router-dom";
+
+
 
 class Msite extends Component {
     constructor(props) {
         super(props);
         this.state = {
             isShowNav: false,
+            isMore:false,
+            peopleNumber:{},
             itemArr: [{
                 src: 'https://m.wolaidai.com/msite/assets/img/sec_03_item_01.png',
                 item_tit: '大数据',
@@ -34,6 +39,35 @@ class Msite extends Component {
         this.setState({
             isShowNav: !this.state.isShowNav
         })
+    }
+    showMore(){
+        this.setState({
+            isMore:!this.state.isMore
+        })
+    }
+    //人数逐渐增长动画事件
+   
+    
+//生命周期中类似于mounted
+    componentDidMount () {
+       const self=this;
+        axios.get('https://marketing.wolaidai.com/marketing/statistics/summary')
+          .then(function (response) {
+            console.log(response);
+            self.setState({
+                peopleNumbe:response.data.data,
+              });
+            console.log(self.state.peopleNumbe);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+
+
+               
+          
+        
     }
     render() {
         return (
@@ -95,11 +129,11 @@ class Msite extends Component {
             <h2 className="sec_tit">普惠金融</h2>
             <div className="sec_text">通过自主研发的科技提升金融服务以改善人民的生活</div>
             <div className="main-box">
-                <a >
+                <Link to="/jddv3/apply">
                     <div className="item item1">
                         <h3 className="item_tit">消费信贷</h3>
                     </div>
-                </a>
+                </Link>
                 <a >
                     <div className="item item2">
                         <h3 className="item_tit">信用租赁</h3>
@@ -116,6 +150,7 @@ class Msite extends Component {
                     </div>
                 </a>
 
+                
             </div>
         </div>
 
@@ -126,15 +161,15 @@ class Msite extends Component {
             <div className="counts">
                 <div className="item">
                     <div className="count-number">
-                        <img src="https://m.wolaidai.com/msite/assets/img/section-04-icon-01.svg" />
-                        <strong className="applied" id="applied">305,412,765,682</strong>
+                        <img src="https://m.wolaidai.com/msite/assets/img/section-04-icon-01.svg"  />
+                        <strong className="applied" id="applied" >305,412,765,682</strong>
                     </div>
                     <span className="remark">在线申请金额(元)</span>
                 </div>
                 <div className="item">
                     <div className="count-number">
                         <img src="https://m.wolaidai.com/msite/assets/img/section-04-icon-02.svg" />
-                        <strong className="register" id="register">33,149,305</strong>
+                        <strong className="register" id="register" >33,149,305</strong>
                     </div>
                     <span className="remark">注册用户数(人)</span>
                 </div>
@@ -182,11 +217,11 @@ class Msite extends Component {
         <div className="section section5">
             <h2 className="sec_tit">合作伙伴</h2>
             <div className="sec_text">携手共创&nbsp;&nbsp;&nbsp;&nbsp;普惠金融</div>
-            <div className="img">
+            <div className={this.state.isMore?"img active":"img "}     >
 
             </div>
             <br/>
-            <div className="more_btn"><span className="text">查看更多</span><span className="more_btn_icon"></span></div>
+            <div className={this.state.isMore?"more_btn active":"more_btn"}><span className="text" onClick={this.showMore.bind(this)}>{this.state.isMore?'收起更多':'查看更多'}</span><span className="more_btn_icon"></span></div>
         </div>
 
         <div className="footer">

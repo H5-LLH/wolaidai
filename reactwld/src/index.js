@@ -8,6 +8,14 @@ import qs from 'qs'
 
 import {Provider, connect} from 'react-redux';
 import {createStore} from 'redux';
+import Apply from './pages/Apply/Apply.jsx';
+import idVerification from './pages/IdVerification/idVerification.jsx';
+import profile from './pages/Profile/profile.jsx';
+import otherProveAuth from './pages/OtherProveAuth/otherProveAuth.jsx';
+import creditcard from './pages/Creditcard/creditcard.jsx';
+
+
+
 
 
 
@@ -35,7 +43,6 @@ const store = createStore(function(state = {
 });
 
 
-
 React.axios = axios; //react中全局引入插件的方式
 React.qs = qs;
 ReactDOM.render(
@@ -44,8 +51,16 @@ ReactDOM.render(
 			<div>
 			
 				<Route path="/msite/" component={Msite} />
-        <Redirect to="/msite/"/>
-				
+       
+				<Route path="/jddv3/apply" component={Apply} />
+        <Route path="/jddv3/idVerification" component={idVerification} />
+        <Route path="/jddv3/profile" component={profile} />
+        <Route path="/jddv3/otherProveAuth" component={otherProveAuth} />
+        <Route path="/auth/creditcard" component={creditcard} />
+
+
+
+
 			</div>
 		</Router >
 	</Provider>
