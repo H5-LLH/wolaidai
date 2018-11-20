@@ -26,13 +26,23 @@ class Gdetail extends Component {
 	}
 
 	loadMore() {
+		let res =  decodeURI(this.props.location.search); 
+		let hashArr = res.slice(1).split("&");
+		let objkl = {}
+		hashArr.forEach(function(item,index){
+			let arrKey = item.split("=");
+			objkl[arrKey[0]] = arrKey[1];
+		})
+		console.log(objkl)
+		let GDurl = "https://mf.wolaidai.com/lease/api/v1/goods/"+objkl.gdid+"/detail"
+		//post请求的参数写法
 		//		let postData = React.qs.stringify({
 		//					page: 4,
 		//					limit: 10
 		//				});
 		React.axios({
 			method: 'get',
-			url: "https://mf.wolaidai.com/lease/api/v1/goods/106/detail"
+			url: GDurl
 		}).then((response) => {
 			console.log(response.data.result);
 			
@@ -55,6 +65,8 @@ class Gdetail extends Component {
 		this.loadMore();
 	}
 
+	
+	
 	render() {
 		return(
 			<div className="route-container">

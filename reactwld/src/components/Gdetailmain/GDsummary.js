@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 //import './GDmain.css'
 
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 class GDsummary extends Component {
 	constructor(props) {
 		super(props);
@@ -131,10 +131,10 @@ class GDsummary extends Component {
 		return(
 			<div>
 				<div className="good-summary">
-					<div className="good-shop">
+					<Link to="/credit/" className="good-shop">
 						<img src="https://mf.wolaidai.com/aif-lease//file/c942fe37ec1da9e4fa18d0e64e84fde9.png" alt="" />
 						首页
-					</div>
+					</Link >
 					<button className="good-bargain">找人帮砍-￥200</button>
 					<button className="good-check double_11" onClick={this.hiddenCar.bind(this)}>立即拥有</button>
 				</div>

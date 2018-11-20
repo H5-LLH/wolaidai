@@ -21,17 +21,18 @@ import * as serviceWorker from './serviceWorker';
 //创建store仓库
 const store = createStore(function(state = {
   count: 0,
-  ggtext:"嘻嘻"
+  navId:"16",
+  
 }, action) {
   const count = state.count
   switch (action.type) {
 	//使用示例
     case 'multi':
       return Object.assign({}, state, {name: action.name});
-    case 'DDtext':
+    case 'mainId':
       return {
         ...state,
-        ggtext: action.ggtext
+        navId: action.navId
       };
     default:
       return state
