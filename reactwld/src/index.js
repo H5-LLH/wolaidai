@@ -9,9 +9,14 @@ import qs from 'qs'
 import {Provider, connect} from 'react-redux';
 import {createStore} from 'redux';
 
+import home from './pages/Home/Home.jsx';
+//引入热门推荐组件
+import FinancialLife from './pages/FinancialLife/FinancialLife.jsx';
+//引入大额简单贷组件
+import Xsell from './pages/Xsell/Xsell.jsx';
 
-
-
+//引入ant的css样式
+import 'antd/dist/antd.css';
 import * as serviceWorker from './serviceWorker';
 
 
@@ -43,8 +48,9 @@ ReactDOM.render(
 	<Provider store={store}>
 		<Router>
 			<div>
-				
-				
+				<Route exact path="/" component={home} />
+				<Route path="/FinancialLife" component={FinancialLife} />
+			  <Route path="/Xsell" component={Xsell} />
 				
 			</div>
 		</Router >
