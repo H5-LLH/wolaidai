@@ -6,44 +6,89 @@ import './change.css';
 
 
 class Apply extends Component {
-   constructor(props) {
+    constructor(props) {
         super(props);
-       
+
         this.state = {
-            text:'',
-           data:{"aaa":[
-           {"min_installment":1028.13,"max_installment":1099.91,"defaults":true,"selectable":true,"tenor":"3M","installment":1103.26
-           },{"min_installment":524.78,"max_installment":589.48,"selectable":true,"tenor":"6M","installment":592.55
-           },{"min_installment":357.10,"max_installment":420.51,"selectable":true,"tenor":"9M","installment":423.56
-           },{"min_installment":273.33,"max_installment":336.89,"selectable":true,"tenor":"12M","installment":339.99
-         }]}
+            text: '',
+            data: '',
+            plan: ''
         }
     }
-    handelChange(e){
-     if(e.target.value>=5000&&e.target.value<=30000){
+    handelChange(e) {
+        if (e.target.value >= 5000 && e.target.value <= 30000) {
+            this.setState({
+                text: e.target.value - e.target.value % 500,
+            });
+        } else if (e.target.value < 5000) {
+            this.setState({
+                text: e.target.value,
+
+            });
+        } else {
+            this.setState({
+                text: 30000,
+
+            });
+        }
+    }
+    isEnough(ele) {
+        return ele.tenor == "6M"
+    }
+    isEnough1(ele) {
+        return ele.tenor == "9M"
+    }
+    isEnough2(ele) {
+        return ele.tenor == "12M"
+    }
+    haha() {
+        return;
+    }
+    
+    plan(e) {
+        var filtered = ' ';
+
+        if (e.target.value == '6个月') {
+            var filtered = this.state.data[this.state.text].filter(this.isEnough);
+        } else if (e.target.value == '9个月') {
+            var filtered = this.state.data[this.state.text].filter(this.isEnough1);
+        } else if (e.target.value == '12个月') {
+            var filtered = this.state.data[this.state.text].filter(this.isEnough2);
+        } else {
+            return;
+        }
+        console.log(filtered)
+        console.log(e.target.value)
         this.setState({
-            text:e.target.value-e.target.value%500,
-        });
-     }else if(e.target.value<5000) {
-      this.setState({
-            text:e.target.value,
-            
-        });
-     }else {
-      this.setState({
-            text:30000,
-            
-        });
-     }
-      
-      
+            plan: {
+                "min_installment": filtered[0].min_installment,
+                "max_installment": filtered[0].max_installment
+            }
+        })
+        console.log(this.state.plan.min_installment)
+
+    }
+    componentWillMount() {
+        React.axios.get("https://japi.wolaidai.com/jrocket2/api/v4/installments")
+            .then((response) => {
+                console.log(response)
+                this.setState({
+                    data: response.data
+                })
+
+
+            }).catch(function(error) {
+                console.log(error);
+            });
     }
 
- 
+
+
+
     render() {
         return (
-  
-  <div id="app" className="clearfix">
+
+            <div id="app" className="clearfix">
     <div data-reactroot="" className="FullScreen___3G_mI">
         <div className="FullScreen___2UNA1" >
             <div data-role="xlib-toast" className="Toast___2hwGa" ><p></p></div>
@@ -103,9 +148,9 @@ class Apply extends Component {
                                           <select className="Select___3O2LI Select___2apkG " disabled={this.state.text>=5000?false:true} name="tenor">
 
                                             <option >选择贷款期限</option>
-                                            <option ref='chioce'>6个月</option>
-                                            <option ref='chioce'>9个月</option>
-                                            <option ref='chioce'>12个月</option>
+                                            <option name="6M">6个月</option>
+                                            <option name="9M">9个月</option>
+                                            <option name="12M">12个月</option>
                                         </select>
                                         )
                                     }
@@ -114,12 +159,12 @@ class Apply extends Component {
                                   {(()=>{
                                       if(this.state.text>=5000){
                                     return (
-                                        <select  className="Select___3O2LI Select___2apkG " disabled={this.state.text>=5000?false:true} name="tenor">
+                                        <select onClick={this.plan.bind(this)} className={this.state.text>=5000?'Select___3O2LI Select___31_AX':"Select___3O2LI Select___2apkG "} disabled={this.state.text>=5000?false:true} name="tenor">
 
                                           <option >选择贷款期限</option>
-                                          <option >6个月</option>
-                                          <option >9个月</option>
-                                          <option >12个月</option>
+                                          <option name="6M">6个月</option>
+                                          <option name="9M">9个月</option>
+                                          <option name="12M">12个月</option>
                                         </select>
                                       )
                                   }
@@ -127,16 +172,25 @@ class Apply extends Component {
                                   
                                   
                                 }
-                                 
-                                      
-
-                                      
-
-                                    
+                                                                    
                           </div>
                       </div>
                       <div className="jdd-form-input"><label htmlFor="fee">月还款</label>
-                          <div data-role="xlib-input" className="Input___3_uXR" style={{ paddingRight:'30px'}}><input value={this.state.data.aaa[0].min_installment+'~'+this.state.data.aaa[0].min_installment}  disabled="" name="fee" className="Input___3w_BR" /></div>
+                          <div data-role="xlib-input" className="Input___3_uXR" style={{ paddingRight:'30px'}}><input onChange={this.haha} value={
+                            (()=>{
+                                if(this.state.text>=5000){
+                                  if(this.state.plan.toString().length>2){
+                                    return this.state.plan.min_installment+'~'+this.state.plan.max_installment}else{
+                                return '';
+                               }
+                              }else{
+                                (()=>{this.state.plan="";})();
+                                return '';
+                                
+                              }
+                            })()
+                            
+                          }  disabled="" name="fee" className="Input___3w_BR" /></div>
                       </div>
                   </div>
               </div>
