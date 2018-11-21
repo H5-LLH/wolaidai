@@ -33,7 +33,7 @@ class Gdetail extends Component {
 			let arrKey = item.split("=");
 			objkl[arrKey[0]] = arrKey[1];
 		})
-		console.log(objkl)
+		//console.log(objkl)
 		let GDurl = "https://mf.wolaidai.com/lease/api/v1/goods/"+objkl.gdid+"/detail"
 		//post请求的参数写法
 		//		let postData = React.qs.stringify({
@@ -44,7 +44,7 @@ class Gdetail extends Component {
 			method: 'get',
 			url: GDurl
 		}).then((response) => {
-			console.log(response.data.result);
+			//console.log(response.data.result);
 			
 			this.setState({
 				

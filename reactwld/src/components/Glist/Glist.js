@@ -64,7 +64,7 @@ class Glist extends Component {
 						if(this.state.goodslist.length>0){
 							return this.state.goodslist.map((item,index)=>{
 								return (
-								<Link to={`/detail/?gdid=${item.id}`} className="home-item" key={item.id}>
+								<Link to={`/Gdetail/?gdid=${item.id}`} className="home-item" key={item.id}>
 									<img src={item.primaryImagePath} alt="" />
 									<div className="home-info">
 									<span className="cut-price-container">

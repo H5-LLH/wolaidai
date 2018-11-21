@@ -8,18 +8,43 @@ class Gfoot extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			pickTab: 0,
-			tabs: ""
+			footArr:[
+			{
+				title:"首页",
+				imgPath:"https://mf.wolaidai.com/aif-lease/file/d315c7496dbbfb878dda54aae360e2b9.png"
+			},
+			{
+				title:"我的订单",
+				imgPath:"https://mf.wolaidai.com/aif-lease/file/58ae73537bfd5221bfa1da3f518b9a91.png"
+			},
+			{
+				title:"账户",
+				imgPath:"https://mf.wolaidai.com/aif-lease//file/f73487ca823a7467e4475197ae63f750.png"
+			},
+		],
+			activeNum:0
 		};
 	}
 
+	footClick(index){
+		this.setState({
+			activeNum:index
+		})
+	}
+		
 	render() {
 		return(
 			<div>
 				<ul className="tab-container">
-					<li className="active"><img src="https://mf.wolaidai.com/aif-lease/file/d315c7496dbbfb878dda54aae360e2b9.png" alt="" />首页</li>
-					<li className="active"><img src="https://mf.wolaidai.com/aif-lease/file/58ae73537bfd5221bfa1da3f518b9a91.png" alt="" />我的订单</li>
-					<li className="active"><img src="https://mf.wolaidai.com/aif-lease//file/f73487ca823a7467e4475197ae63f750.png" alt="" />账户</li>
+				{
+					(()=>{
+						return this.state.footArr.map((item,index)=>{
+							return (<li onClick={this.footClick.bind(this,index)} className={index===this.state.activeNum ? "active":""} key={index}><img src={item.imgPath} alt="" />{item.title}</li>)
+						})
+					})()
+				}
+					
+					
 				</ul>
 			</div>
 		)

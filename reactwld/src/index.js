@@ -13,7 +13,6 @@ import {createStore} from 'redux';
 
 import Gcredit from './pages/Gcredit/Gcredit';
 import Gdetail from './pages/Gdetail/Gdetail';
-import Gtext from './pages/Gtext/text';
 
 
 import * as serviceWorker from './serviceWorker';
@@ -50,8 +49,8 @@ ReactDOM.render(
 			<div>
 				
 				<Route path="/credit/" component={Gcredit} />
-				<Route path="/detail/" component={Gdetail} />
-				<Route path="/text/" component={Gtext} />
+				<Route path="/Gdetail/" component={Gdetail} />
+				
 				
 			</div>
 		</Router >
