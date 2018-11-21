@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+
 
 import '../Apply/apply.css';
 import '../Apply/apply1.css';
@@ -379,7 +381,7 @@ class profile extends Component {
                 </div>
             </div>
             <div className="tips">* 我来贷向您承诺：不会泄露您的借款信息</div>
-            <div className="actions"><button className="btn theme-classNameic font-color-white bg-color border-color box-shadow">提交极速审核</button></div>
+            <div className="actions"><Link to="/jddv3/otherProveAuth" className="btn theme-classNameic font-color-white bg-color border-color box-shadow">提交极速审核</Link ></div>
             <div className="popup" style={{display:'none'}}>
                 <div className="alert AlertPromptDialog___3q22C">
                     <div className="theme-classNameic img-auditing-bg AlertPromptDialog___1v-bS">

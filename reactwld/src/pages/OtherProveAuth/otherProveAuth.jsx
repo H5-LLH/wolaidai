@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+
 import '../Apply/apply.css';
 import '../Apply/apply1.css';
 
@@ -14,11 +16,11 @@ class App extends Component {
                     3选1，请尽快补充，否则10天后需要重新审核
                     
                 </p>
-                <div className="menu-bar MenuBar___3WZxs"><span className="iconfont icon-xinyongqia2 theme-classNameic font-color bg-color-light"></span>
+                <Link to="/auth/creditcard" className="menu-bar MenuBar___3WZxs"><span className="iconfont icon-xinyongqia2 theme-classNameic font-color bg-color-light"></span>
                     <div className="text">
                        信用卡认证
                     </div>
-                    <div className="status">提交</div><span className="iconfont icon-icon_arrow" style={{fontSize: '0.28rem'}}></span></div>
+                    <div className="status">提交</div><span className="iconfont icon-icon_arrow" style={{fontSize: '0.28rem'}}></span></Link>
                 <div className="menu-bar MenuBar___3WZxs"><span className="iconfont icon-zhifubaozhanghaopeizhix theme-classNameic font-color bg-color-light"></span>
                     <div className="text">
                         支付宝认证

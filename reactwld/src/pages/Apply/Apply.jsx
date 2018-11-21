@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+
 
 import './apply.css';
 import './apply1.css';
@@ -194,7 +196,10 @@ class Apply extends Component {
                       </div>
                   </div>
               </div>
-               <div className="btn-box"><button className="btn theme-classNameic font-color-white bg-color border-color box-shadow">立即申请</button>
+               <div className="btn-box"><Link to={{ pathname: '/jddv3/idVerification', query: { name: 'ryan' } }} className="btn theme-classNameic font-color-white bg-color border-color box-shadow">立即申请</Link>
+               
+
+
                   <div className="Modal___3X1Gj Modal___1rt0o">
                       <div className="WeChatModal___16Fzk">
                           <div className="WeChatModal___3pvt6"><img className="WeChatModal___2vqF4" src="https://web.wolaidai.com/img/jddv3/wx_tip_bg.png" alt="tip" />

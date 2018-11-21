@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
+
 
 import '../Apply/apply.css';
 import '../Apply/apply1.css';
@@ -46,7 +48,7 @@ class idVerification extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="actions"><button className="btn theme-classNameic font-color-white bg-color border-color box-shadow">下一步</button></div>
+                <div className="actions"><Link to="/jddv3/profile" className="btn theme-classNameic font-color-white bg-color border-color box-shadow">下一步</Link></div>
                 <div >
                     <div data-role="xlib-toast" className="Toast___2hwGa" >
                         <p></p>
