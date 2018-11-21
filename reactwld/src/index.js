@@ -13,6 +13,7 @@ import {createStore} from 'redux';
 
 import Gcredit from './pages/Gcredit/Gcredit';
 import Gdetail from './pages/Gdetail/Gdetail';
+import Gtext from './pages/Gtext/text';
 
 
 import * as serviceWorker from './serviceWorker';
@@ -21,7 +22,7 @@ import * as serviceWorker from './serviceWorker';
 //创建store仓库
 const store = createStore(function(state = {
   count: 0,
-  navId:"16",
+  navId:6666,
   
 }, action) {
   const count = state.count
@@ -50,6 +51,7 @@ ReactDOM.render(
 				
 				<Route path="/credit/" component={Gcredit} />
 				<Route path="/detail/" component={Gdetail} />
+				<Route path="/text/" component={Gtext} />
 				
 			</div>
 		</Router >

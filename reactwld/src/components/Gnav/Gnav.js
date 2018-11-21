@@ -34,13 +34,11 @@ class Gnav extends Component {
 		this.firstLoad();
 	}
 	
-	navClick(index){
+	navClick(index,idd){
 		this.setState({
-			navIndex:index,
-			jklll:this.props.navId
+			navIndex:index
 		});
-		this.props.clickNav();
-		
+		this.props.clickNav(idd);	
 	}
 	//点击滑动，没有做
 	render() {
@@ -51,7 +49,7 @@ class Gnav extends Component {
 					(()=>{
 						if(this.state.navArr.length>0){
 							return this.state.navArr.map((item,index)=>{
-								return (<li onClick={this.navClick.bind(this,index)} className={this.state.navIndex===index? 'home-tag-item GnavBB' : 'home-tag-item GnavSS'} key={index}>{item.tagName}</li>)
+								return (<li onClick={this.navClick.bind(this,index,item.id)} className={this.state.navIndex===index? 'home-tag-item GnavBB' : 'home-tag-item GnavSS'} key={index}>{item.tagName}</li>)
 							})
 						}
 					})()
@@ -71,15 +69,14 @@ export default connect(
 	(dispatch)=>{
 		return {
 			//对象封装事件函数，触发改变
-		clickNav:()=>{
+		clickNav:(iddd)=>{
 			//输出返回一个对象。包含类型。以及要修改的值
 			dispatch({
 				type:"mainId",
-				navId:"20"
+				navId:iddd
 			});
 		}
 		
 		}
 	}
-)
-(Gnav);
+)(Gnav);

@@ -49,7 +49,7 @@ class Gdetail extends Component {
 			this.setState({
 				
 				detailObj: response.data.result,
-				topimg:response.data.result.spuDocument.spuPrimarys[0].documentUrl,
+				topimg:response.data.result.spuDocument.spuPrimarys,
 				tabsImg:response.data.result.spuDocument.spuDetails,
 				tabsImgcs:response.data.result.spuDocument.spuParams[0],
 				tabsImgfw:response.data.result.spuDocument.leaseExplanations[0],

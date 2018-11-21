@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 //import './Xfoot.css'
 
+import {connect} from 'react-redux';
 import { Link } from "react-router-dom";
 class Glist extends Component {
 	constructor(props) {
@@ -30,10 +31,34 @@ class Glist extends Component {
 	componentDidMount() {
 		this.listFirstLoad();
 	}
+	//生命周期
+	componentWillReceiveProps(){
+		//使用定时器可以。强制实时更新
+		setTimeout(()=>{
+		//console.log(this.props.navId)
+		let aaa= "https://mf.wolaidai.com/lease/api/v1/goods/"+this.props.navId+"/spus"
+		React.axios({
+		method: 'get',
+		url: aaa
+		}).then((response) => {
+			//console.log(response.data.result);
+			
+			this.setState({
+				goodslist:response.data.result
+			})
+
+		}).catch((error) => {
+			console.log(error)
+		})
+		},10)
+		
+	}
+	
+	
 	//==================分割线===============================
 	render() {
 		return(
-			<div className="home-list">
+			<div className="home-list" id={this.props.navId}>
 				{
 					(()=>{
 						if(this.state.goodslist.length>0){
@@ -61,4 +86,10 @@ class Glist extends Component {
 		)
 	}
 }
-export default Glist;
+export default connect(
+	(state)=>{
+		return state;
+	},
+	(dispatch)=>{
+		return {}
+})(Glist);

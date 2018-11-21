@@ -109,7 +109,7 @@ class GDsummary extends Component {
 	//封装一个函数。用来比较两个对象是否 相等================
 	EqualObj(){
 		let b = this.props.skus;
-		b.map((item,index)=>{
+		b.forEach((item,index)=>{
 			if(item.attributeOptions["颜色"]===this.state.checkBox["颜色"] && item.attributeOptions["内存"]===this.state.checkBox["内存"] && item.attributeOptions.rentTerm===this.state.checkBox.rentTerm){
 				this.setState({
 					changeRent:item
@@ -146,7 +146,7 @@ class GDsummary extends Component {
 								<div className="checklist-numbers">
 								<span>￥{
 									(()=>{
-										if(this.state.changeRent==""){
+										if(this.state.changeRent===""){
 										return ("269.00")
 									}else{
 										return this.state.changeRent.rent
@@ -156,7 +156,7 @@ class GDsummary extends Component {
 								}</span>
 								<span>库存{
 									(()=>{
-										if(this.state.changeRent==""){
+										if(this.state.changeRent===""){
 										return ("98")
 									}else{
 										return this.state.changeRent.stockNum
