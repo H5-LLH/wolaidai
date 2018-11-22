@@ -21,8 +21,7 @@ import * as serviceWorker from './serviceWorker';
 //创建store仓库
 const store = createStore(function(state = {
   count: 0,
-  navId:6666,
-  
+  navId:6666
 }, action) {
   const count = state.count
   switch (action.type) {
@@ -34,6 +33,7 @@ const store = createStore(function(state = {
         ...state,
         navId: action.navId
       };
+      
     default:
       return state
   }

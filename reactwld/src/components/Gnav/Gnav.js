@@ -34,11 +34,11 @@ class Gnav extends Component {
 		this.firstLoad();
 	}
 	
-	navClick(index,idd){
+	navClick(index,iddd){
 		this.setState({
 			navIndex:index
 		});
-		this.props.clickNav(idd);	
+		this.props.clickNav(iddd);
 	}
 	//点击滑动，没有做
 	render() {

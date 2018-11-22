@@ -1,25 +1,112 @@
-<!DOCTYPE html>
-<html>
+import React, {
+	Component
+} from 'react';
 
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-
-	<body>
+import Gfoot from '../../components/Gfoot/Gfoot';
+class Gaccount extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			gonglue:false,
+			kefu:false
+		};
+	}   
+	
+	gonglueClick(){
+		this.setState({
+			gonglue:!this.state.gonglue
+		})
+	}
+	kefuClick(){
+		this.setState({
+			kefu:!this.state.kefu
+		})
+	}
+	
+	render() {
+		return(
 		<div>
-			<div classNameNameNameName="app-container" style={{pointer-events: "initial"}}>
-				<div classNameNameNameName="route-container">
-					<div classNameNameNameName="home-container">
-
-						<div className="help-container">
+			<div className="app-container" style={{pointerEvents: "initial",display:(this.state.gonglue||this.state.kefu ? "none":"block")}}>
+				<ul className="my-container">
+					<li onClick={this.gonglueClick.bind(this)}>租机攻略</li>
+					<li onClick={this.kefuClick.bind(this)}>客服与帮助</li>
+				</ul>
+			</div>
+			
+			<div className="app-container" style={{pointerEvents: "initial"}}>
+							<div className="strategy-container" style={{display:(this.state.gonglue ? "block":"none")}}>
+								<div className="strategy-top">
+									<ul className="step-image">
+										<li></li>
+										<li></li>
+										<li></li>
+										<li></li>
+									</ul>
+									<ul className="step-text">
+										<li>选择手机</li>
+										<li>&gt;</li>
+										<li>0押金支付</li>
+										<li>&gt;</li>
+										<li>月付租金</li>
+										<li>&gt;</li>
+										<li>买断/归还/续租</li>
+									</ul>
+								</div>
+								<ul className="strategy-step">
+									<li>
+										<div className="step-number"><span>1</span></div>
+										<div className="step-title">挑选机型</div>
+										<p>如，选择iPhone X 银色 256G 12个月</p>
+									</li>
+									<li>
+										<div className="step-number"><span>2</span></div>
+										<div className="step-title">0押金，机器到手</div>
+										<p>无需支付现金，预授权额度作押金</p>
+										<p>预授权不产生费用，无需还款，随机释放</p>
+									</li>
+									<li>
+										<div className="step-number"><span>3</span></div>
+										<div className="step-title">月付租金</div>
+										<p>每月定期支付月租，资金无压力</p>
+									</li>
+									<li>
+										<div className="step-number"><span>4</span></div>
+										<div className="step-title">到期后，买断、还机、续租任您选</div>
+										<p>买断：支付尾款，终身拥有</p>
+										<p>归还：邮寄归还，每年都能用新机</p>
+										<p>续租：申请续租，继续使用，方便灵活</p>
+									</li>
+								</ul>
+								<div className="strategy-advantage">
+									<div className="title-outerbox">
+										<div className="title-box"><span>租机三大优势</span></div>
+									</div>
+									<ul>
+										<li>
+											<div className="advantage-item-title">1.年年享新机：</div>
+											<div>租机可以解决机器更换时处理旧机的烦恼，可年年租最新款手机。</div>
+										</li>
+										<li>
+											<div className="advantage-item-title">2.资金无压力：</div>
+											<div>租金仅需每月还款，大大减少了一次性购买手机的资金压力。</div>
+										</li>
+										<li>
+											<div className="advantage-item-title">3.便捷易申请：</div>
+											<div>只需要简单的申请即可0押金获得手机。</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+							
+							
+							<div className="help-container" style={{display:(this.state.kefu? "block":"none")}}>
 							<ul>
 								<li>
 									<div className="help-type">
 										<div>关于押金</div>
 										<div className="right-bracket"></div>
 									</div>
-									<ul className="help-que-ans-box" style={{"display: "none"}}>
+									<ul className="help-que-ans-box" style={{display: "none"}}>
 										<li>
 											<div className="question">1.押金如何收取？</div>
 											<div className="answer">用户下单时，根据信用评估结果获取免押额度后，若存在需要冻结的押金金额，需要通过银行卡账户的资金渠道冻结相应的押金金额。租赁服务终止后，淘新机收到归还的商品后7天内进行核对和检测，经核验不存在需要抵扣押金的情形即可解冻该笔押金。</div>
@@ -39,7 +126,7 @@
 										<div>关于租金</div>
 										<div className="right-bracket"></div>
 									</div>
-									<ul className="help-que-ans-box" style={{"display: "none"}}>
+									<ul className="help-que-ans-box" style={{display: "none"}}>
 										<li>
 											<div className="question">1.租金如何支付？</div>
 											<div className="answer">还款日当天，租金会通过您绑定的银行卡直接扣款，您无需主动还款，避免您因为遗忘导致逾期。</div>
@@ -55,7 +142,7 @@
 										<div>关于租期</div>
 										<div className="right-bracket"></div>
 									</div>
-									<ul className="help-que-ans-box" style={{"display: "none"}}>
+									<ul className="help-que-ans-box" style={{display: "none"}}>
 										<li>
 											<div className="question">1.租期从什么时候开始算？</div>
 											<div className="answer">起租日以发货物流显示签收当日开始计算，租赁时长为12个月，用户需要在起租日次月当日支付上一期的租金。</div>
@@ -71,7 +158,7 @@
 										<div>关于运费</div>
 										<div className="right-bracket"></div>
 									</div>
-									<ul className="help-que-ans-box" style={{"display: "none"}}>
+									<ul className="help-que-ans-box" style={{display: "none"}}>
 										<li>
 											<div className="question">1.商品维修寄送产生的运费由谁支付？</div>
 											<div className="answer">物流费用“遵循谁寄出谁付费”原则。寄出商品的费用，由淘新机承担，归还商品及维保的运费，由客户承担。</div>
@@ -87,7 +174,7 @@
 										<div>关于归还</div>
 										<div className="right-bracket"></div>
 									</div>
-									<ul className="help-que-ans-box" style={{"display: "none"}}>
+									<ul className="help-que-ans-box" style={{display: "none"}}>
 										<li>
 											<div className="question">1.合约到期后如何处理？</div>
 											<div className="answer">您需在租赁期满前决定买断还是归还商品，选择买断的应在7日内支付买断费；选择归还的，应在7日内将商品寄还给淘新机。</div>
@@ -107,7 +194,7 @@
 										<div>关于买断</div>
 										<div className="right-bracket"></div>
 									</div>
-									<ul className="help-que-ans-box" style={{"display: "none"}}>
+									<ul className="help-que-ans-box" style={{display: "none"}}>
 										<li>
 											<div className="question">1.如何买断商品？</div>
 											<div className="answer">我们会在合约到期前的10个自然日内开放买断入口，点击后您将了解到买断需支付的金额，如您认同，可进行支付并买断商品。</div>
@@ -123,7 +210,7 @@
 										<div>其他常见问题</div>
 										<div className="right-bracket"></div>
 									</div>
-									<ul className="help-que-ans-box" style={{"display: "none"}}>
+									<ul className="help-que-ans-box" style={{display: "none"}}>
 										<li>
 											<div className="question">1.机器丢失或损坏怎么办？</div>
 											<div className="answer">如机器丢失或毁损，您可以选择以下处理方式：</div>
@@ -148,11 +235,10 @@
 							</ul>
 							<a className="help-online" href="tel:10100518">客服电话：10100518</a>
 						</div>
-
-					</div>
+							
 				</div>
-			</div>
 		</div>
-	</body>
-
-</html>
+		)
+	}
+}
+export default Gaccount;

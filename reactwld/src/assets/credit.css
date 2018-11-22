@@ -349,7 +349,7 @@
     display: flex
 }
 
-.home-category>li {
+.home-category>li{
     -webkit-align-items: center;
     -webkit-box-align: center;
     -webkit-box-direction: normal;
@@ -2779,7 +2779,7 @@
 }
 
 .help-type .down-bracket,.help-type .right-bracket {
-    background: url(/aif-lease/file/5b5013b5dcb666830c483b5a6efeccd4.png) no-repeat 50%;
+    background: url(https://mf.wolaidai.com/aif-lease/file/5b5013b5dcb666830c483b5a6efeccd4.png) no-repeat 50%;
     background-size: 100%;
     width: .25rem
 }
@@ -2848,22 +2848,22 @@
 }
 
 .step-image li:first-child {
-    background: url(/aif-lease/file/0bcf3cdee52dc36c2d0c8ffa29d07cd9.png) no-repeat 50%;
+    background: url(https://mf.wolaidai.com/aif-lease/file/0bcf3cdee52dc36c2d0c8ffa29d07cd9.png) no-repeat 50%;
     background-size: 100%
 }
 
 .step-image li:nth-child(2) {
-    background: url(/aif-lease/file/aaef4686d049d09665e31743328ed1d7.png) no-repeat 50%;
+    background: url(https://mf.wolaidai.com/aif-lease/file/aaef4686d049d09665e31743328ed1d7.png) no-repeat 50%;
     background-size: 100%
 }
 
 .step-image li:nth-child(3) {
-    background: url(/aif-lease/file/8495ebb3ba740f87d7d7e07dfb84a5c9.png) no-repeat 50%;
+    background: url(https://mf.wolaidai.com/aif-lease/file/8495ebb3ba740f87d7d7e07dfb84a5c9.png) no-repeat 50%;
     background-size: 100%
 }
 
 .step-image li:last-child {
-    background: url(/aif-lease/file/df49b139dd66db281f48dee4f37e66fc.png) no-repeat 50%;
+    background: url(https://mf.wolaidai.com/aif-lease/file/df49b139dd66db281f48dee4f37e66fc.png) no-repeat 50%;
     background-size: 100%
 }
 
@@ -3790,14 +3790,14 @@ input:-ms-input-placeholder,textarea:-ms-input-placeholder {
 }
 
 .my-container>li:after {
-    background: url(/aif-lease/file/5b5013b5dcb666830c483b5a6efeccd4.png) no-repeat 50%;
+    background: url(https://mf.wolaidai.com/aif-lease/file/5b5013b5dcb666830c483b5a6efeccd4.png) no-repeat 50%;
     background-size: 100%;
     content: "";
     width: .25rem
 }
 
 .bargain-container {
-    background: url(/aif-lease/file/24d981dd27c811af5ef8f6cb645369df.png) 0 0 no-repeat;
+    background: url(https://mf.wolaidai.com/aif-lease/file/24d981dd27c811af5ef8f6cb645369df.png) 0 0 no-repeat;
     background-size: 100% 100%;
     overflow: hidden;
     padding-bottom: .7rem;
@@ -4839,4 +4839,10 @@ button {
 
 .btn-box {
     padding: .4rem .3rem
+}
+
+
+
+.HGYclass{
+	font-weight: bold; color: rgb(248, 41, 35);
 }

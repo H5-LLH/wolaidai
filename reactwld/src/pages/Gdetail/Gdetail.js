@@ -21,7 +21,8 @@ class Gdetail extends Component {
 			tabsImg:"",
 			tabsImgcs:"",
 			tabsImgfw:"",
-			topPrice:"4999.00"
+			topPrice:"4999.00",
+			summaryImg:""
 		};
 	}
 
@@ -53,7 +54,8 @@ class Gdetail extends Component {
 				tabsImg:response.data.result.spuDocument.spuDetails,
 				tabsImgcs:response.data.result.spuDocument.spuParams[0],
 				tabsImgfw:response.data.result.spuDocument.leaseExplanations[0],
-				topPrice:response.data.result.skus[0].price
+				topPrice:response.data.result.skus[0].price,
+				summaryImg:response.data.result.spuDocument.spuPrimarys[0].documentUrl
 			})
 
 		}).catch((error) => {
@@ -74,7 +76,7 @@ class Gdetail extends Component {
 					<GDimgtop topimg={{topimgUrl:this.state.topimg,topimgName:this.state.detailObj,topPrice:this.state.topPrice}} />
 					<GDservice />
 					<GDtabs tabsimg={{imgjs:this.state.tabsImg,imgcs:this.state.tabsImgcs,imgfw:this.state.tabsImgfw}} />
-					<GDsummary summaryObj={this.state.detailObj.attributes} showImg={this.state.topimg} skus={this.state.detailObj.skus}/>
+					<GDsummary summaryObj={this.state.detailObj.attributes} showImg={this.state.summaryImg} skus={this.state.detailObj.skus}/>
 				</div>
 			</div>
 		)

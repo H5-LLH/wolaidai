@@ -8,15 +8,20 @@ class GDservice extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			pickTab: 0,
-			tabs: ""
+			serviceShow:false
 		};
 	}
-
+	
+	serviceClick(){
+		this.setState({
+			serviceShow:!this.state.serviceShow
+		})
+	}
+	
 	render() {
 		return(
 			<div>
-				<div className="service-container">
+				<div className="service-container" onClick={this.serviceClick.bind(this)}>
 							<div><img src="https://mf.wolaidai.com/aif-lease//file/62dc45960a428659f12b85579140cf59.png" className="service-good" alt="" />信用免押金</div>
 							<div><img src="https://mf.wolaidai.com/aif-lease//file/62dc45960a428659f12b85579140cf59.png" className="service-good" alt="" />正品保障</div>
 							<div><img src="https://mf.wolaidai.com/aif-lease//file/62dc45960a428659f12b85579140cf59.png" className="service-good" alt="" />7天无理由退货</div>
@@ -25,7 +30,7 @@ class GDservice extends Component {
 							</div>
 						</div>
 				
-				<div className="modal-container hidden">
+				<div className={this.state.serviceShow ? "modal-container":"modal-container hidden"} onClick={this.serviceClick.bind(this)}>
 							<div className="modal-content service-content">服务说明
 								<div className="service-item">
 								<img src="https://mf.wolaidai.com/aif-lease//file/62dc45960a428659f12b85579140cf59.png" className="service-good" alt="" />
@@ -43,7 +48,7 @@ class GDservice extends Component {
 								</div>
 								<div className="service-margin">
 								</div>
-								<button className="service-close">关闭</button>
+								<button className="service-close" onClick={this.serviceClick.bind(this)}>关闭</button>
 								< /div>
 						</div>
 				
