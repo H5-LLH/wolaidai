@@ -11,7 +11,29 @@ class profile extends Component {
     this.state={
       showtime:false,
       showadress:false,
-      recommend:''
+      nowshowadress:false,
+
+      recommend:'',
+      years:['2018','2017','2016','2015','2014','2013','2012','2010','2009','2008','2007','2006','2005','2004','2003','2002'],
+      months:['01','02','03','04','05','06','07','08','09','10','11','12'],
+      yearidx:'',
+      monthidx:'',
+      yearNumber:2016,
+      monthNumber: '05',
+
+      city:0,
+      cities:0,
+      area:0,
+      province:'广东省',
+      area1:'广州市',
+      area2:'天河区',
+
+      nowcity:0,
+      nowcities:0,
+      nowarea:0,
+      nowprovince:'广东省',
+      nowarea1:'广州市',
+      nowarea2:'天河区',
     }
   }
   showtime(){
@@ -24,6 +46,33 @@ class profile extends Component {
       showadress:!this.state.showadress
     })
   }
+   nowshowadress(){
+    this.setState({
+      nowshowadress:!this.state.nowshowadress
+    })
+  }
+  yearidx(index,e){
+    this.setState({
+        yearidx : index,
+        yearNumber:this.state.years[index],
+
+
+    })
+  }
+   monthidx(index,e){
+    this.setState({
+        monthidx : index,
+        monthNumber:this.state.months[index]
+    })
+    
+  }
+  save(){
+    this.setState({
+        showtime:false
+    })
+  }
+
+
   recommend(e){
     this.setState({
       recommend:e.target.value
@@ -42,6 +91,77 @@ class profile extends Component {
         });*/
 
   }
+  cities(index,e){
+    this.setState({
+        cities : this.state.city.data[index],
+        province: e.target.innerHTML
+    })
+   console.log(e.target.innerHTML)
+    
+  }
+   area(index,e){
+        this.setState({
+             area : this.state.cities.city[index].area,
+             area1: e.target.innerHTML
+        })
+       console.log(e.target.innerHTML)
+        
+
+   } 
+     area1(index,e){
+        this.setState({
+             area2 : e.target.innerHTML,
+            
+        })
+       console.log(e.target.innerHTML)
+        
+
+   } 
+
+   nowcities(index,e){
+    this.setState({
+        nowcities : this.state.nowcity.data[index],
+        nowprovince: e.target.innerHTML
+    })
+   console.log(e.target.innerHTML)
+    
+  }
+   nowarea(index,e){
+        this.setState({
+             nowarea : this.state.nowcities.city[index].area,
+             nowarea1: e.target.innerHTML
+        })
+       console.log(e.target.innerHTML)
+        
+
+   } 
+     nowarea1(index,e){
+        this.setState({
+             nowarea2 : e.target.innerHTML,
+            
+        })
+       console.log(e.target.innerHTML)
+        
+
+   } 
+  componentDidMount(){
+        React.axios.get("province.json")
+        .then((response) => {
+           
+            this.setState({
+                city: response,
+                nowcity: response,
+
+            })
+           
+        }).catch(function (error) {
+            console.log(error);
+        });
+    
+
+  
+  }
+
   render() {
     return (
       <div id="app" className="clearfix" style={{fontSize: '12px', height: '755px'}}>
@@ -78,7 +198,7 @@ class profile extends Component {
                                 <div data-role="xlib-input" className="Input___3_uXR" ><input onChange={this.recommend.bind(this)} value={this.state.recommend} placeholder="请填写签署劳动合同的单位名称" maxLength="50" className="Input___3w_BR" /></div>
                             </div>
                         </div>
-                        <div className="SmartInput___1xN3Z" style={{ display: 'block' }}><i className="iconfont icon-xialax SmartInput___2FRLv"></i>
+                        <div className="SmartInput___1xN3Z" style={{ display: 'none' }}><i className="iconfont icon-xialax SmartInput___2FRLv"></i>
                             <ul className="SmartInput____5Hjo">
                               <li id="smartLi0">石家庄百度文化传播有限公司</li>
                             </ul>
@@ -87,76 +207,31 @@ class profile extends Component {
                     </div>
                     <div data-role="form-group" className="FormGroup___2qhXh arrowRight">
                         <div className="FormGroup___Rc1SA"><label>入职时间</label>
-                            <div className="DateSelect___1oGpe" onClick={this.showtime.bind(this)}><span className="DateSelect___oQKnc">2016 年 01 月</span>
+                            <div className="DateSelect___1oGpe"><span className="DateSelect___oQKnc"  onClick={this.showtime.bind(this)} >{this.state.yearNumber}年 {this.state.monthNumber} 月</span>
                             <i className="iconfont icon-xinyongrenzhengyetiaozhuan DateSelect___1_1Oe"></i>
                                 <div className={this.state.showtime?'Modal___3X1Gj Modal___U3o4P':"Modal___3X1Gj Modal___1rt0o"}>
                                     <div className="DateSelect___3YSsQ">
-                                        <div className="DateSelect___2NK17"><a> 取消 </a><a className="theme-classNameic font-color-white bg-color"> 完成 </a></div>
+                                        <div className="DateSelect___2NK17"><a  onClick={this.save.bind(this)}> 取消 </a><a className="theme-classNameic font-color-white bg-color" onClick={this.save.bind(this)}> 完成 </a></div>
                                         <div className="DateSelect___1YSTr">
                                             <div className="DateSelect___4FxBm">
-                                                <li>2018 年 </li>
-                                                <li>2017 年 </li>
-                                                <li className="theme-classNameic font-color">2016 年 </li>
-                                                <li>2015 年 </li>
-                                                <li>2014 年 </li>
-                                                <li>2013 年 </li>
-                                                <li>2012 年 </li>
-                                                <li>2011 年 </li>
-                                                <li>2010 年 </li>
-                                                <li>2009 年 </li>
-                                                <li>2008 年 </li>
-                                                <li>2007 年 </li>
-                                                <li>2006 年 </li>
-                                                <li>2005 年 </li>
-                                                <li>2004 年 </li>
-                                                <li>2003 年 </li>
-                                                <li>2002 年 </li>
-                                                <li>2001 年 </li>
-                                                <li>2000 年 </li>
-                                                <li>1999 年 </li>
-                                                <li>1998 年 </li>
-                                                <li>1997 年 </li>
-                                                <li>1996 年 </li>
-                                                <li>1995 年 </li>
-                                                <li>1994 年 </li>
-                                                <li>1993 年 </li>
-                                                <li>1992 年 </li>
-                                                <li>1991 年 </li>
-                                                <li>1990 年 </li>
-                                                <li>1989 年 </li>
-                                                <li>1988 年 </li>
-                                                <li>1987 年 </li>
-                                                <li>1986 年 </li>
-                                                <li>1985 年 </li>
-                                                <li>1984 年 </li>
-                                                <li>1983 年 </li>
-                                                <li>1982 年 </li>
-                                                <li>1981 年 </li>
-                                                <li>1980 年 </li>
-                                                <li>1979 年 </li>
-                                                <li>1978 年 </li>
-                                                <li>1977 年 </li>
-                                                <li>1976 年 </li>
-                                                <li>1975 年 </li>
-                                                <li>1974 年 </li>
-                                                <li>1973 年 </li>
-                                                <li>1972 年 </li>
-                                                <li>1971 年 </li>
-                                                <li>1970 年 </li>
+                                                    {(()=>{
+                                                        return this.state.years.map((item,index)=>{
+                                                            return (<li key={index} onClick={this.yearidx.bind(this,index)} className={this.state.yearidx==index?"theme-classNameic font-color":''} >{item}年</li>)
+                                                        })
+                                                    })()}
+
+
+                                                   
                                             </div>
                                             <div className="DateSelect___4FxBm">
-                                                <li className="theme-classNameic font-color">01 月</li>
-                                                <li>02 月</li>
-                                                <li>03 月</li>
-                                                <li>04 月</li>
-                                                <li>05 月</li>
-                                                <li>06 月</li>
-                                                <li>07 月</li>
-                                                <li>08 月</li>
-                                                <li>09 月</li>
-                                                <li>10 月</li>
-                                                <li>11 月</li>
-                                                <li>12 月</li>
+                                                
+                                                {(()=>{
+                                                   return this.state.months.map((item,index)=>{
+                                                        return( <li onClick={this.monthidx.bind(this,index)} className={this.state.monthidx==index?"theme-classNameic font-color":''} key={index} >{item}月</li>)
+                                                    })
+                                                })()
+                                                    
+                                                }
                                             </div>
                                         </div>
                                     </div>
@@ -171,88 +246,67 @@ class profile extends Component {
                     </div>
                     <div data-role="form-group" className="FormGroup___2qhXh arrowRight">
                         <div className="FormGroup___Rc1SA" ><label>单位地址</label>
-                            <div className="Location___1dShG" onClick={this.showadress.bind(this)}><span className="Location___1_K-1">河北省 石家庄市 桥东区</span>
+                            <div className="Location___1dShG" ><span className="Location___1_K-1" onClick={this.showadress.bind(this)}>{this.state.province} {this.state.area1} {this.state.area2}</span>
                             <i className="iconfont icon-xinyongrenzhengyetiaozhuan Location___2nq8r"></i>
                                 <div className={this.state.showadress?'Modal___3X1Gj Modal___U3o4P':"Modal___3X1Gj Modal___1rt0o"}>
                                     <div className="Location___1JRyr">
-                                        <div className="Location___dpeeu"><a> 取消 </a><a className="theme-classNameic font-color-white bg-color"> 完成 </a></div>
+                                        <div className="Location___dpeeu"><a onClick={this.showadress.bind(this)}> 取消 </a><a className="theme-classNameic font-color-white bg-color" onClick={this.showadress.bind(this)}> 完成 </a></div>
                                         <div className="Location___2_lkZ">
-                                            <div className="Location___1BPn9">
-                                                <li>北京市</li>
-                                                <li>天津市</li>
-                                                <li className="theme-classNameic font-color">河北省</li>
-                                                <li>山西省</li>
-                                                <li>内蒙古自治区</li>
-                                                <li>辽宁省</li>
-                                                <li>吉林省</li>
-                                                <li>黑龙江省</li>
-                                                <li>上海市</li>
-                                                <li>江苏省</li>
-                                                <li>浙江省</li>
-                                                <li>安徽省</li>
-                                                <li>福建省</li>
-                                                <li>江西省</li>
-                                                <li>山东省</li>
-                                                <li>河南省</li>
-                                                <li>湖北省</li>
-                                                <li>湖南省</li>
-                                                <li>广东省</li>
-                                                <li>广西壮族自治区</li>
-                                                <li>海南省</li>
-                                                <li>重庆市</li>
-                                                <li>四川省</li>
-                                                <li>贵州省</li>
-                                                <li>云南省</li>
-                                                <li>西藏自治区</li>
-                                                <li>陕西省</li>
-                                                <li>甘肃省</li>
-                                                <li>青海省</li>
-                                                <li>宁夏回族自治区</li>
-                                                <li>新疆维吾尔自治区</li>
+                                            <div className="Location___1BPn9">                                                                      
+                                               {
+                                                    (()=>{
+                                                        if(this.state.city.data){
+                                                        
+                                                        return this.state.city.data.map((item,index)=>{
+                                                            return( <li  key={index}  onClick={this.cities.bind(this,index)}  >{item.name}</li>)
+                                                        })  
+
+                                                    }
+                                                                            
+                                                    })()
+                                                  
+                                                }
                                             </div>
                                             <div className="Location___1BPn9">
-                                                <li className="theme-classNameic font-color">石家庄市</li>
-                                                <li>唐山市</li>
-                                                <li>秦皇岛市</li>
-                                                <li>邯郸市</li>
-                                                <li>邢台市</li>
-                                                <li>保定市</li>
-                                                <li>张家口市</li>
-                                                <li>承德市</li>
-                                                <li>沧州市</li>
-                                                <li>廊坊市</li>
-                                                <li>衡水市</li>
-                                                <li>定州市</li>
-                                                <li>省直辖县级行政区划</li>
+                                                
+                                                {
+                                                    
+                                                   (()=>{
+                                                    
+                                                        if(this.state.cities.city){
+                                                        
+                                                        return this.state.cities.city.map((item,index)=>{
+                                                            return( <li  key={index} onClick={this.area.bind(this,index)} >{item.name}</li>)
+                                                        })  
+
+                                                        }
+                                                                            
+                                                    })()
+                                                    
+                                                  
+                                                }
+                                                
+                                                
                                             </div>
                                             <div className="Location___1BPn9">
-                                                <li>长安区</li>
-                                                <li className="theme-classNameic font-color">桥东区</li>
-                                                <li>桥西区</li>
-                                                <li>新华区</li>
-                                                <li>井陉矿区</li>
-                                                <li>裕华区</li>
-                                                <li>井陉县</li>
-                                                <li>正定县</li>
-                                                <li>栾城县</li>
-                                                <li>行唐县</li>
-                                                <li>灵寿县</li>
-                                                <li>高邑县</li>
-                                                <li>深泽县</li>
-                                                <li>赞皇县</li>
-                                                <li>无极县</li>
-                                                <li>平山县</li>
-                                                <li>元氏县</li>
-                                                <li>赵县</li>
-                                                <li>辛集市</li>
-                                                <li>藁城市</li>
-                                                <li>晋州市</li>
-                                                <li>新乐市</li>
-                                                <li>鹿泉市</li>
-                                                <li>市辖区</li>
-                                                <li>藁城区</li>
-                                                <li>鹿泉区</li>
-                                                <li>栾城区</li>
+                                               
+                                                {
+                                                    
+                                                   (()=>{
+                                                    
+                                                        if(this.state.area){
+                                                      
+                                                        return this.state.area.map((item,index)=>{
+                                                            return( <li  key={index} onClick={this.area1.bind(this,index)} >{item}</li>)
+                                                        })  
+
+                                                        }
+                                                                            
+                                                    })()
+                                                    
+                                                  
+                                                }
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -286,67 +340,70 @@ class profile extends Component {
             </div>
             <div className="section">
                 <div data-role="form-group" className="FormGroup___2qhXh arrowRight">
-                    <div className="FormGroup___Rc1SA"><label>现居住地</label>
-                        <div className="Location___1dShG"><span className="Location___1_K-1">天津市 天津市 和平区</span>
+                    <div className="FormGroup___Rc1SA"><label >现居住地</label>
+                        <div className="Location___1dShG"><span onClick={this.nowshowadress.bind(this)} className="Location___1_K-1">{this.state.nowprovince} {this.state.nowarea1} {this.state.nowarea2}</span>
                         <i className="iconfont icon-xinyongrenzhengyetiaozhuan Location___2nq8r"></i>
-                            <div className="Modal___3X1Gj Modal___1rt0o">
+                            <div className={this.state.nowshowadress?'Modal___3X1Gj Modal___U3o4P':"Modal___3X1Gj Modal___1rt0o"}>
                                 <div className="Location___1JRyr">
-                                    <div className="Location___dpeeu"><a> 取消 </a><a className="theme-classNameic font-color-white bg-color"> 完成 </a></div>
+                                    <div className="Location___dpeeu"><a onClick={this.nowshowadress.bind(this)}> 取消 </a><a className="theme-classNameic font-color-white bg-color" onClick={this.nowshowadress.bind(this)}> 完成 </a></div>
                                     <div className="Location___2_lkZ">
                                         <div className="Location___1BPn9">
                                             <li>北京市</li>
-                                            <li className="theme-classNameic font-color">天津市</li>
-                                            <li>河北省</li>
-                                            <li>山西省</li>
-                                            <li>内蒙古自治区</li>
-                                            <li>辽宁省</li>
-                                            <li>吉林省</li>
-                                            <li>黑龙江省</li>
-                                            <li>上海市</li>
-                                            <li>江苏省</li>
-                                            <li>浙江省</li>
-                                            <li>安徽省</li>
-                                            <li>福建省</li>
-                                            <li>江西省</li>
-                                            <li>山东省</li>
-                                            <li>河南省</li>
-                                            <li>湖北省</li>
-                                            <li>湖南省</li>
-                                            <li>广东省</li>
-                                            <li>广西壮族自治区</li>
-                                            <li>海南省</li>
-                                            <li>重庆市</li>
-                                            <li>四川省</li>
-                                            <li>贵州省</li>
-                                            <li>云南省</li>
-                                            <li>西藏自治区</li>
-                                            <li>陕西省</li>
-                                            <li>甘肃省</li>
-                                            <li>青海省</li>
-                                            <li>宁夏回族自治区</li>
-                                            <li>新疆维吾尔自治区</li>
+                                             {
+                                                    (()=>{
+                                                        if(this.state.nowcity.data){
+                                                        
+                                                        return this.state.nowcity.data.map((item,index)=>{
+                                                            return( <li  key={index}  onClick={this.nowcities.bind(this,index)}  >{item.name}</li>)
+                                                        })  
+
+                                                    }
+                                                                            
+                                                    })()
+                                                  
+                                                }
+                                            
                                         </div>
                                         <div className="Location___1BPn9">
                                             <li className="theme-classNameic font-color">天津市</li>
-                                            <li>市辖区</li>
+
+                                                {
+                                                    
+                                                   (()=>{
+                                                    
+                                                        if(this.state.nowcities.city){
+                                                        
+                                                        return this.state.nowcities.city.map((item,index)=>{
+                                                            return( <li  key={index} onClick={this.nowarea.bind(this,index)} >{item.name}</li>)
+                                                        })  
+
+                                                        }
+                                                                            
+                                                    })()
+                                                    
+                                                  
+                                                }
                                         </div>
                                         <div className="Location___1BPn9">
                                             <li className="theme-classNameic font-color">和平区</li>
-                                            <li>河东区</li>
-                                            <li>河西区</li>
-                                            <li>南开区</li>
-                                            <li>河北区</li>
-                                            <li>红桥区</li>
-                                            <li>东丽区</li>
-                                            <li>西青区</li>
-                                            <li>津南区</li>
-                                            <li>北辰区</li>
-                                            <li>武清区</li>
-                                            <li>宝坻区</li>
-                                            <li>滨海新区</li>
-                                            <li>宁河县</li>
-                                            <li>静海县</li>
-                                            <li>蓟县</li>
+                                            {
+                                                    
+                                                   (()=>{
+                                                    
+                                                        if(this.state.nowarea){
+                                                      
+                                                        return this.state.nowarea.map((item,index)=>{
+                                                            return( <li  key={index} onClick={this.nowarea1.bind(this,index)} >{item}</li>)
+                                                        })  
+
+                                                        }
+                                                                            
+                                                    })()
+                                                    
+                                                  
+                                                }
+                                                
+                                            
                                         </div>
                                     </div>
                                 </div>
