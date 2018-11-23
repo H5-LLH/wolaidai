@@ -1,38 +1,100 @@
-<!DOCTYPE html>
-<html>
+import React, {
+	Component
+} from 'react';
+//import './Xfoot.css'
 
-	<head>
-		<meta charset="UTF-8">
-		<title></title>
-	</head>
-
-	<body>
-		<div>
-			<div classNameNameNameNameName="app-container" style={{pointer-events: "initial"}}>
-				<div classNameNameNameNameName="route-container">
-					<div classNameNameNameNameName="home-container">
-
-						<div className="confirm-container">
-							<div className="goodgadget-container"><img src="https://welab.oss-cn-shenzhen.aliyuncs.com/production/api/rocket2/public/system/documents/a4/c1/eb07a8bc7e9d2e15121f0f3b8549b9543662/spu_primary_original.jpeg?Expires=1542967888&amp;OSSAccessKeyId=LTAIZeL07SeAtFXG&amp;Signature=1%2Bpulx8nZWe/7qnXXYSzRhVFLfY%3D" className="goodgadget-pic">
-								<div className="goodgadget-type"><span className="goodgadget-name">全新iPhone Xs 国行</span><span className="goodgadget-params">规格：深空灰/64G/18个月租满即送/租完即送</span><span className="goodgadget-amount">总租金： ￥629.00×18期</span></div>
+import {connect} from 'react-redux';
+//import { Link } from "react-router-dom";
+class Gconfirm extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			confirmShow:false,
+			Agreement:false,
+			arr:"",
+			confirmImgUrl:""
+		};
+	}
+	
+	confirmClick(){
+		this.setState({
+			confirmShow:!this.state.confirmShow
+		})
+	}
+	
+	Agreement(){
+		this.setState({
+			Agreement:!this.state.Agreement
+		})
+	}
+	
+	componentDidMount(){
+		//console.log(this.props.confirmImg)
+			this.setState({
+				arr:this.props.confirmArr
+			})
+		let res =  decodeURI(this.props.location.search); 
+		res=res.slice(1)
+		this.setState({
+			confirmImgUrl:res
+		})
+		console.log(res)
+	}
+	
+	
+	
+	render() {
+		return(
+			<div>
+				<div className="confirm-container">
+							<div className="goodgadget-container"><img src={this.state.confirmImgUrl} className="goodgadget-pic" />
+								<div className="goodgadget-type"><span className="goodgadget-name">{this.props.confirmArr.skuName}</span>
+								<span className="goodgadget-params">
+								规格：{this.props.confirmArr.attributeOptions["颜色"]}/{this.props.confirmArr.attributeOptions["内存"]}/{this.props.confirmArr.attributeOptions.rentTerm}个月租满即送/租完即送</span>
+								<span className="goodgadget-amount">
+								{
+									(()=>{
+										
+										return (`总租金： ￥${this.props.confirmArr.rent}.00×${this.props.confirmArr.attributeOptions.rentTerm}期`)
+									})()
+								}
+								</span>
+								</div>
 							</div>
 							<div className="gap-20"></div>
 							<ul className="money-container">
-								<li className="money-grey">总租金<span className="money-currency">11,322.00</span></li>
-								<li className="money-black">月租金<span className="money-currency">629.00</span></li>
-								<li className="money-black">活动优惠<span className="money-currency-minus">420.00</span></li>
+								<li className="money-grey">总租金<span className="money-currency" >{this.props.confirmArr.attributeOptions.rentTerm*this.props.confirmArr.rent}</span></li>
+								<li className="money-black">月租金<span className="money-currency">{`${this.props	.confirmArr.rent}.00`}</span></li>
+								
 								<li className="money-black">意外保障费<span className="money-currency">429.00</span></li>
-								<li className="money-grey">租期<span>共18个月</span></li>
+								<li className="money-grey">租期<span>共{this.props.confirmArr.attributeOptions.rentTerm}个月</span></li>
 								<li className="money-grey">租金付款方式<span>银行卡代扣</span></li>
 							</ul>
 							<div className="gap-20"></div>
 							<div className="confirm-footer">
-								<div className="confirm-agree"><img src="/aif-lease//file/e294924c007a325875ef143e64f21733.png" className="confirm-checked hidden">
-									<div className="confirm-unchecked"></div>我已阅读并同意<button className="confirm-protocol">《租赁服务协议》</button></div><button className="confirm-submit" disabled="">提交免押评估</button></div>
-							<div className="modal-container hidden">
+								<div className="confirm-agree">
+								<img src="https://mf.wolaidai.com/aif-lease//file/e294924c007a325875ef143e64f21733.png" className={this.state.confirmShow? "confirm-checked" : "confirm-checked hidden"} onClick={this.confirmClick.bind(this)} />
+								{
+									(()=>{
+										if(this.state.confirmShow){
+											return 
+										}else{
+											return (<div onClick={this.confirmClick.bind(this)} className="confirm-unchecked"></div>)
+										}
+									})()
+								}
+								
+								我已阅读并同意
+								<button className="confirm-protocol" onClick={this.Agreement.bind(this)}>《租赁服务协议》</button></div>
+								<button className="confirm-submit" disabled="">提交免押评估</button></div>
+							
+							
+							
+							
+							<div className={this.state.Agreement?"modal-container":"modal-container hidden"}>
 								<div className="modal-content ">
 									<div className="protocol-box">
-										<div className="box-header">《租赁服务协议》<span className="protocol-close">X</span></div>
+										<div className="box-header">《租赁服务协议》<span className="protocol-close" onClick={this.Agreement.bind(this)}>X</span></div>
 										<div className="protocol-content">
 											<div className="protocol-text-box">
 												<h3 className="title">融资租赁服务合同</h3>
@@ -209,17 +271,19 @@
 									<div className="content">
 										<h3>温馨提示</h3>
 										<p>很抱歉，您当前额度不足，请选择额度范围内价格的商品下单</p>
-										<div className="button">重新下单</div><img src="/aif-lease//file/f94b4298e56a65f3aff20a4a570e5e4c.png" alt="关闭"></div>
+										<div className="button">重新下单</div><img src="https://mf.wolaidai.com/aif-lease//file/f94b4298e56a65f3aff20a4a570e5e4c.png" alt="关闭" /></div>
 								</div>
 							</div>
 						</div>
-						
-						<br />
-
-					</div>
-				</div>
 			</div>
-		</div>
-	</body>
-
-</html>
+		)
+	}
+}
+export default connect(
+	(state)=>{
+		return state;
+	},
+	(dispatch)=>{
+		return {}
+	}
+)(Gconfirm);

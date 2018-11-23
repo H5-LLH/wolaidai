@@ -13,6 +13,7 @@ import {createStore} from 'redux';
 
 import Gcredit from './pages/Gcredit/Gcredit';
 import Gdetail from './pages/Gdetail/Gdetail';
+import Gconfirm from './pages/Gconfirm/Gconfirm';
 
 
 import * as serviceWorker from './serviceWorker';
@@ -21,7 +22,9 @@ import * as serviceWorker from './serviceWorker';
 //创建store仓库
 const store = createStore(function(state = {
   count: 0,
-  navId:6666
+  navId:6666,
+  confirmArr:"nihao",
+  confirmImg:""
 }, action) {
   const count = state.count
   switch (action.type) {
@@ -33,7 +36,11 @@ const store = createStore(function(state = {
         ...state,
         navId: action.navId
       };
-      
+      case 'confirm':
+      return {
+        ...state,
+        confirmArr: action.confirmArr
+      };
     default:
       return state
   }
@@ -50,6 +57,7 @@ ReactDOM.render(
 				
 				<Route path="/credit/" component={Gcredit} />
 				<Route path="/Gdetail/" component={Gdetail} />
+				<Route path="/Gconfirm/" component={Gconfirm} />
 				
 				
 			</div>

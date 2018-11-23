@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 //import './GDmain.css'
 
+import {connect} from 'react-redux';
 import { Link } from "react-router-dom";
 class GDsummary extends Component {
 	constructor(props) {
@@ -113,12 +114,16 @@ class GDsummary extends Component {
 			if(item.attributeOptions["颜色"]===this.state.checkBox["颜色"] && item.attributeOptions["内存"]===this.state.checkBox["内存"] && item.attributeOptions.rentTerm===this.state.checkBox.rentTerm){
 				this.setState({
 					changeRent:item
-				})
+				});
 			}
 			
 		})
 	}
-
+	
+	confirmClick(arr){
+		this.props.confirmFn(arr);
+	}
+	
 	//显示，隐藏条件选择框=============================
 	hiddenCar(){
 		this.setState({
@@ -226,7 +231,7 @@ class GDsummary extends Component {
 									<div className="checklist-note">因意外产生的碎屏等问题，可享受免费保修一次</div>
 								</li>
 							</ul>
-							<div className="checklist-submit"><button>确定</button></div>
+							<div className="checklist-submit" onClick={this.confirmClick.bind(this,this.state.changeRent)}><button><Link to={`/Gconfirm/?${this.props.showImg}`}>确定</Link></button></div>
 						</div>
 					</div>
 				
@@ -234,4 +239,21 @@ class GDsummary extends Component {
 		)
 	}
 }
-export default GDsummary;
+export default connect(
+	(state)=>{
+		return state;
+	},
+	(dispatch)=>{
+		return {
+			//对象封装事件函数，触发改变
+		confirmFn:(arr)=>{
+			//输出返回一个对象。包含类型。以及要修改的值
+			dispatch({
+				type:"confirm",	
+				confirmArr:arr
+			});
+		}
+		
+		}
+	}
+)(GDsummary);
