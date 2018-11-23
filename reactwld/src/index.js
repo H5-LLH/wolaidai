@@ -11,9 +11,13 @@ import {createStore} from 'redux';
 
 import home from './pages/Home/Home.jsx';
 //引入热门推荐组件
-import FinancialLife from './pages/FinancialLife/FinancialLife.jsx';
+import financialLife from './pages/FinancialLife/FinancialLife.jsx';
 //引入大额简单贷组件
-import Xsell from './pages/Xsell/Xsell.jsx';
+import xsell from './pages/Xsell/Xsell.jsx';
+//引入车险消费分期
+import insurance from './pages/Insurance/Insurance.jsx';
+//引入申请大额贷款
+import apply from './pages/Apply/Apply.jsx';
 
 //引入ant的css样式
 import 'antd/dist/antd.css';
@@ -49,9 +53,10 @@ ReactDOM.render(
 		<Router>
 			<div>
 				<Route exact path="/" component={home} />
-				<Route path="/FinancialLife" component={FinancialLife} />
-			  <Route path="/Xsell" component={Xsell} />
-				
+				<Route path="/financialLife" component={financialLife} />
+        <Route path="/insurance" component={insurance} />
+			  <Route path="/xsell" component={xsell} />
+				<Route path="/apply" component={apply} />
 			</div>
 		</Router >
 	</Provider>

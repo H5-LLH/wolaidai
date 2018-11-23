@@ -172,7 +172,9 @@ ShowTime(){
 				this.makeTime = setInterval(()=>{
 					let now = new Date();{/*得到电脑当前时间*/}
 					let offset = Math.floor((d2.getTime() - now.getTime())/1000);{/*获取毫秒计数时必须除毫秒1000；拿到距离秒杀时间还剩 多少秒*/}
-					
+					let sec = offset%60;
+					let minutes = Math.floor(offset/60)%60;
+					let hours = Math.floor(offset/60/60)%24;
 				if(offset <= 0){
 						clearInterval(this.makeTime);
 						sec = '';
@@ -180,9 +182,7 @@ ShowTime(){
 						hours = '';
 					}
 				{/*拿到距秒杀时间的 秒、分、时*/}
-					let sec = offset%60;
-					let minutes = Math.floor(offset/60)%60;
-					let hours = Math.floor(offset/60/60)%24;
+					
 						//console.log(sec,minutes,hours);	
 				{/*将还剩多少秒变成几天几时几分几秒（补0操作）*/}	 
 						sec =  sec<10? "0"+sec :sec;
@@ -244,9 +244,9 @@ ShowTime(){
 						<div className="rent-title">
 								<h2>大额简单贷</h2>
 						</div>
-						<a className="dejdd-wrap-banner" href="https://m.wolaidai.com/web-static/xsell/family/quota.html?channel=wj_prm_jrb_00000001" data-event="simple_clk_uv">
+						<Link to={ this.state.runPhoto[1].href} className="dejdd-wrap-banner"  data-event="simple_clk_uv">
 								<img src={banner} alt=""/>
-						</a>
+						</Link>
 						<ul className="group-list">
 								<li className="group-item"><img src={group} alt="" className="group-icon"/> 5万额度</li>
 								<li className="group-item"><img src={group} alt="" className="group-icon"/> 10分钟机审</li>
