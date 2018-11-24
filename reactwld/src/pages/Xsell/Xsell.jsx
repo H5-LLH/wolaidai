@@ -36,7 +36,7 @@ newNumber(){
 //正则比配手机号码  1 [34578]
 phoneNum(){
   let phoneH = this.refs.phone.value;
-  if(!/^1[3-9]\d{9}$/i.test(phoneH)){
+  if(!/^1[3-9]\d{9}$/i.test(phoneH)&&phoneH.trim()!=""){
     alert("手机号码不正确");
   }
 }

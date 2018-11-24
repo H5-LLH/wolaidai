@@ -252,7 +252,7 @@ ShowTime(){
 								<li className="group-item"><img src={group} alt="" className="group-icon"/> 10分钟机审</li>
 								<li className="group-item"><img src={group} alt="" className="group-icon"/> 24小时下款</li>
 						</ul>
-						<a href="https://m.wolaidai.com/web-static/xsell/family/quota.html?channel=wj_prm_jrb_00000001" data-event="simple_clk_uv" className="btn">立即申请</a>
+						<Link to={ this.state.runPhoto[1].href} data-event="simple_clk_uv" className="btn">立即申请</Link>
 				</div>
 				{/*手机分期*/}
 				<div className="operation-bit">
