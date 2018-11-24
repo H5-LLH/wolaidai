@@ -4,6 +4,7 @@ import './index.css';
 import './common.css';
 import { Carousel } from 'antd';
 import { Link } from "react-router-dom";
+import CountUp from 'react-countup';
 
 
 
@@ -13,7 +14,9 @@ class Msite extends Component {
         this.state = {
             isShowNav: false,
             isMore:false,
-            peopleNumber:{},
+            peopleNumber:'',
+            scrolltop:'',
+            getting:true,
             itemArr: [{
                 src: 'https://m.wolaidai.com/msite/assets/img/sec_03_item_01.png',
                 item_tit: '大数据',
@@ -46,12 +49,40 @@ class Msite extends Component {
         })
     }
     //人数逐渐增长动画事件
+   milion(value){
+        let show='';
+        var number=[];
+        number=value.toString().split('');
+     
+        let len = number.length;
+        number.forEach((item,index)=>{
+            if (item.match('^[0-9]*$')){
+                if(len - 3 === index){
+                    show +='<span >' + ',' + '</span>'+ '<span className="first">' + item + '</span>';
+                }
+                else if (len - 6 === index){
+                    show +='<span >' + ',' + '</span>'+  '<span className="second">' + item + '</span>';
+                }else if (len - 9 === index){
+                    show +='<span >' + ',' + '</span>'+  '<span className="third" >' + item + '</span>';
+                }
+                else{
+                    show += '<span >' + item + '</span>';
+                }
+            }
+
+        })
+         return show;   
    
-    
-//生命周期中类似于mounted
-    componentDidMount () {
-       const self=this;
-        axios.get('https://marketing.wolaidai.com/marketing/statistics/summary')
+   }
+
+   scrolltop(){
+        
+
+     
+     if(document.documentElement.scrollTop>this.refs.peo.offsetTop+this.refs.peo1.offsetTop){
+        const self=this;
+        if(this.state.getting){
+            axios.get('https://marketing.wolaidai.com/marketing/statistics/summary')
           .then(function (response) {
             console.log(response);
             self.setState({
@@ -61,17 +92,30 @@ class Msite extends Component {
           })
           .catch(function (error) {
             console.log(error);
-          });
-
-
-
-               
+          });   
+        }
+        if(this.state.peopleNumbe){
+            this.setState({
+            getting:false,
+            })
+        }
           
-        
+     }
+ 
+   }
+
+
+    
+//生命周期
+   
+    componentDidMount (){
+        window.addEventListener('scroll', this.scrolltop.bind(this))
     }
+
+
     render() {
         return (
-            <div id="app">
+            <div id="app" style={{position:'relative'}}>
         <div className="header">
             <div className="logo">
                 <a href="index.html"><img src="../../assets/logo1.png" alt=""/></a>
@@ -154,19 +198,21 @@ class Msite extends Component {
             </div>
         </div>
 
-        <div className="section counts-section">
+        <div className="section counts-section" ref="peo1">
             <h1 className="rotate-lines pos-rel">千亿级别金融平台</h1>
             <p>为超过3000万用户提供金融服务</p>
 
-            <div className="counts">
+            <div className="counts" >
                 <div className="item">
                     <div className="count-number">
                         <img src="https://m.wolaidai.com/msite/assets/img/section-04-icon-01.svg"  />
-                        <strong className="applied" id="applied" >305,412,765,682</strong>
+                        <strong className="applied" id="applied" ref='peo'>
+                        <CountUp start={0} end={parseInt(this.state.peopleNumbe)} duration={3} formattingFn={this.milion } /></strong>
+
                     </div>
                     <span className="remark">在线申请金额(元)</span>
                 </div>
-                <div className="item">
+                <div className="item"> 
                     <div className="count-number">
                         <img src="https://m.wolaidai.com/msite/assets/img/section-04-icon-02.svg" />
                         <strong className="register" id="register" >33,149,305</strong>

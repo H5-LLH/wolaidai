@@ -27,6 +27,9 @@ class profile extends Component {
       province:'广东省',
       area1:'广州市',
       area2:'天河区',
+      provinceindex:'-1',
+      area1index:'-1',
+      area2index:'-1',
 
       nowcity:0,
       nowcities:0,
@@ -45,6 +48,15 @@ class profile extends Component {
     this.setState({
       showadress:!this.state.showadress
     })
+  }
+  hideadress(){
+    if(this.state.area2.toString().length>0){
+       this.setState({
+      showadress:!this.state.showadress
+    })
+    }else{
+      alert('请输入正确地址')
+    }
   }
    nowshowadress(){
     this.setState({
@@ -92,18 +104,56 @@ class profile extends Component {
 
   }
   cities(index,e){
-    this.setState({
-        cities : this.state.city.data[index],
-        province: e.target.innerHTML
-    })
+    if(index==this.state.city){
+        this.setState({
+          cities : this.state.city.data[index],
+          province: e.target.innerHTML,
+          provinceindex:index
+      })
+    }else{
+       this.setState({
+          cities : this.state.city.data[index],
+          province: e.target.innerHTML,
+          provinceindex:index,
+          area1: '',
+          area2: '', 
+          area:0,
+          area1index:'-1',
+          area2index:''
+
+
+      })
+     
+
+    }
+    
    console.log(e.target.innerHTML)
     
   }
    area(index,e){
+    if(index==this.state.city){
+      this.setState({
+             area : this.state.cities.city[index].area,
+             area1: e.target.innerHTML,
+             area1index:index
+        })
+
+    }else{
         this.setState({
              area : this.state.cities.city[index].area,
-             area1: e.target.innerHTML
+             area1: e.target.innerHTML,
+             area1index:index,
+             area2: '', 
+             area2index:'-1'
+
+
+
         })
+
+    }
+
+
+        
        console.log(e.target.innerHTML)
         
 
@@ -111,7 +161,7 @@ class profile extends Component {
      area1(index,e){
         this.setState({
              area2 : e.target.innerHTML,
-            
+            area2index:index
         })
        console.log(e.target.innerHTML)
         
@@ -250,7 +300,7 @@ class profile extends Component {
                             <i className="iconfont icon-xinyongrenzhengyetiaozhuan Location___2nq8r"></i>
                                 <div className={this.state.showadress?'Modal___3X1Gj Modal___U3o4P':"Modal___3X1Gj Modal___1rt0o"}>
                                     <div className="Location___1JRyr">
-                                        <div className="Location___dpeeu"><a onClick={this.showadress.bind(this)}> 取消 </a><a className="theme-classNameic font-color-white bg-color" onClick={this.showadress.bind(this)}> 完成 </a></div>
+                                        <div className="Location___dpeeu"><a onClick={this.hideadress.bind(this)}> 取消 </a><a className="theme-classNameic font-color-white bg-color" onClick={this.hideadress.bind(this)}> 完成 </a></div>
                                         <div className="Location___2_lkZ">
                                             <div className="Location___1BPn9">                                                                      
                                                {
@@ -258,7 +308,7 @@ class profile extends Component {
                                                         if(this.state.city.data){
                                                         
                                                         return this.state.city.data.map((item,index)=>{
-                                                            return( <li  key={index}  onClick={this.cities.bind(this,index)}  >{item.name}</li>)
+                                                            return( <li  key={index}  onClick={this.cities.bind(this,index)} className={this.state.provinceindex==index?"theme-classNameic font-color":''} >{item.name}</li>)
                                                         })  
 
                                                     }
@@ -276,7 +326,7 @@ class profile extends Component {
                                                         if(this.state.cities.city){
                                                         
                                                         return this.state.cities.city.map((item,index)=>{
-                                                            return( <li  key={index} onClick={this.area.bind(this,index)} >{item.name}</li>)
+                                                            return( <li  key={index} onClick={this.area.bind(this,index)} className={this.state.area1index==index?"theme-classNameic font-color":''}>{item.name}</li>)
                                                         })  
 
                                                         }
@@ -297,7 +347,7 @@ class profile extends Component {
                                                         if(this.state.area){
                                                       
                                                         return this.state.area.map((item,index)=>{
-                                                            return( <li  key={index} onClick={this.area1.bind(this,index)} >{item}</li>)
+                                                            return( <li  key={index} onClick={this.area1.bind(this,index)} className={this.state.area2index==index?"theme-classNameic font-color":''}>{item}</li>)
                                                         })  
 
                                                         }
