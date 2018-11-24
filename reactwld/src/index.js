@@ -24,8 +24,10 @@ import * as serviceWorker from './serviceWorker';
 
 //创建store仓库
 const store = createStore(function(state = {
+  longtime:'',
+  allmoney:'',
   count: 0,
-  ggtext:"嘻嘻"
+
 }, action) {
   const count = state.count
   switch (action.type) {
@@ -36,6 +38,12 @@ const store = createStore(function(state = {
       return {
         ...state,
         ggtext: action.ggtext
+      };
+      case 'step1':
+      return {
+        ...state,
+        longtime: action.longtime,
+        allmoney:action.allmoney
       };
     default:
       return state

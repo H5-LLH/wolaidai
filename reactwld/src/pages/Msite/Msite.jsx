@@ -79,7 +79,6 @@ class Msite extends Component {
    }
 
    scrolltop(){
-        
      
      if(document.documentElement.scrollTop>this.refs.peo.offsetTop+this.refs.peo1.offsetTop-document.documentElement.clientHeight){
         const self=this;
@@ -117,9 +116,8 @@ class Msite extends Component {
     componentDidMount (){
      window.addEventListener('scroll', this.scrolltop.bind(this))
     }
-    componentWillUnmount() {
-     window.onscroll = '';
-     
+    componentWillUnmoun() {
+     window.removeEventListener('scroll', this.scrolltop.bind(this))
     }
     render() {
         return (
@@ -206,7 +204,7 @@ class Msite extends Component {
             </div>
         </div>
 
-        <div className="section counts-section" ref="peo1">
+        <div className="section counts-section" id="lll" ref="peo1">
             <h1 className="rotate-lines pos-rel">千亿级别金融平台</h1>
             <p>为超过3000万用户提供金融服务</p>
 
@@ -214,7 +212,7 @@ class Msite extends Component {
                 <div className="item">
                     <div className="count-number">
                         <img src="https://m.wolaidai.com/msite/assets/img/section-04-icon-01.svg"  />
-                        <strong className="applied" id="applied" ref='peo'>
+                        <strong className="applied"  ref='peo'>
 
                         <CountUp start={0} end={this.state.peopleNumber} duration={3} formattingFn={this.milion } /></strong>
 
