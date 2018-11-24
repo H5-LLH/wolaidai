@@ -26,7 +26,16 @@ import * as serviceWorker from './serviceWorker';
 const store = createStore(function(state = {
   longtime:'',
   allmoney:'',
-  count: 0,
+  name:'',
+  idcard:'',
+  jointime:'',
+  workplace:'',
+  education:'',
+  nowplace:'',
+  connect:'',
+  phonenumber:'',
+  creditcardnumber:''
+
 
 }, action) {
   const count = state.count
@@ -39,11 +48,33 @@ const store = createStore(function(state = {
         ...state,
         ggtext: action.ggtext
       };
-      case 'step1':
+    case 'step1':
       return {
         ...state,
         longtime: action.longtime,
         allmoney:action.allmoney
+      };
+    case 'step2':
+      return {
+        ...state,
+        name: action.name,
+        idcard:action.idcard
+      };
+      case 'step3':
+      return {
+        ...state,
+        name: action.name,
+        jointime:action.jointime,
+        workplace:action.workplace,
+        education:action.education,
+        nowplace:action.nowplace,
+        connect:action.connect,
+        phonenumber:action.phonenumber
+      };
+      case 'step4':
+      return {
+        ...state,
+        creditcardnumber:action.creditcardnumber
       };
     default:
       return state

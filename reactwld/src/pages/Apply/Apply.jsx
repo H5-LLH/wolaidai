@@ -67,8 +67,9 @@ class Apply extends Component {
             plan: {
                 "min_installment": filtered[0].min_installment,
                 "max_installment": filtered[0].max_installment,
-                longtime: e.target.value
-            }
+                
+            },
+            longtime: e.target.value
         })
         console.log(this.state.plan.min_installment)
 
@@ -251,7 +252,7 @@ export default connect((state)=>{
                 longtime:this.state.longtime,
                 allmoney:this.state.text
             })
-            console.log(this.props)
+
         }
         
     }
