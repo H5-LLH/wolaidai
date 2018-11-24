@@ -14,9 +14,12 @@ class Msite extends Component {
         this.state = {
             isShowNav: false,
             isMore:false,
-            peopleNumber:'',
+            peopleNumber:0,
+            peopleNumber1:0,
+
             scrolltop:'',
             getting:true,
+            hahaha:123456666,
             itemArr: [{
                 src: 'https://m.wolaidai.com/msite/assets/img/sec_03_item_01.png',
                 item_tit: '大数据',
@@ -77,24 +80,27 @@ class Msite extends Component {
 
    scrolltop(){
         
-
      
-     if(document.documentElement.scrollTop>this.refs.peo.offsetTop+this.refs.peo1.offsetTop){
+     if(document.documentElement.scrollTop>this.refs.peo.offsetTop+this.refs.peo1.offsetTop-document.documentElement.clientHeight){
         const self=this;
         if(this.state.getting){
             axios.get('https://marketing.wolaidai.com/marketing/statistics/summary')
           .then(function (response) {
             console.log(response);
+            let num1 = parseInt(response.data.data.countAmount);
+            let num2 = parseInt(response.data.data.countPeople);
             self.setState({
-                peopleNumbe:response.data.data,
+                peopleNumber:num1,
+                peopleNumber1:num2,
+
               });
-            console.log(self.state.peopleNumbe);
+            console.log(typeof(self.state.peopleNumber),document.documentElement.clientHeight);
           })
           .catch(function (error) {
             console.log(error);
           });   
         }
-        if(this.state.peopleNumbe){
+        if(self.state.peopleNumber){
             this.setState({
             getting:false,
             })
@@ -109,10 +115,12 @@ class Msite extends Component {
 //生命周期
    
     componentDidMount (){
-        window.addEventListener('scroll', this.scrolltop.bind(this))
+     window.addEventListener('scroll', this.scrolltop.bind(this))
     }
-
-
+    componentWillUnmount() {
+     window.onscroll = '';
+     
+    }
     render() {
         return (
             <div id="app" style={{position:'relative'}}>
@@ -207,7 +215,8 @@ class Msite extends Component {
                     <div className="count-number">
                         <img src="https://m.wolaidai.com/msite/assets/img/section-04-icon-01.svg"  />
                         <strong className="applied" id="applied" ref='peo'>
-                        <CountUp start={0} end={parseInt(this.state.peopleNumbe)} duration={3} formattingFn={this.milion } /></strong>
+
+                        <CountUp start={0} end={this.state.peopleNumber} duration={3} formattingFn={this.milion } /></strong>
 
                     </div>
                     <span className="remark">在线申请金额(元)</span>
@@ -215,7 +224,9 @@ class Msite extends Component {
                 <div className="item"> 
                     <div className="count-number">
                         <img src="https://m.wolaidai.com/msite/assets/img/section-04-icon-02.svg" />
-                        <strong className="register" id="register" >33,149,305</strong>
+                        <strong className="register" id="register" >
+                        <CountUp start={0} end={this.state.peopleNumber1} duration={3} formattingFn={this.milion } />
+                        </strong>
                     </div>
                     <span className="remark">注册用户数(人)</span>
                 </div>
