@@ -21,6 +21,7 @@ import creditcard from './pages/Creditcard/creditcard.jsx';
 
 
 
+
 import Gcredit from './pages/Gcredit/Gcredit';
 import Gdetail from './pages/Gdetail/Gdetail';
 import Gconfirm from './pages/Gconfirm/Gconfirm';
@@ -28,6 +29,21 @@ import Gconfirm from './pages/Gconfirm/Gconfirm';
 
 //
 
+
+
+import home from './pages/Home/Home.jsx';
+//引入热门推荐组件
+import financialLife from './pages/FinancialLife/FinancialLife.jsx';
+//引入大额简单贷组件
+import xsell from './pages/Xsell/Xsell.jsx';
+//引入车险消费分期
+import insurance from './pages/Insurance/Insurance.jsx';
+//引入申请大额贷款
+import putIn from './pages/PutIn/PutIn.jsx';
+//引入我的贷款
+import myBorrow from './pages/MyBorrow/MyBorrow.jsx';
+//引入ant的css样式
+import 'antd/dist/antd.css';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -66,6 +82,7 @@ ReactDOM.render(
 	<Provider store={store}>
 		<Router>
 			<div>
+
 				
 				<Route path="/credit/" component={Gcredit} />
 				<Route path="/Gdetail/" component={Gdetail} />
@@ -82,6 +99,14 @@ ReactDOM.render(
         <Route path="/auth/creditcard" component={creditcard} />
 
 
+
+
+				<Route exact path="/" component={home} />
+				<Route path="/financialLife" component={financialLife} />
+        <Route path="/insurance" component={insurance} />
+			  <Route path="/xsell" component={xsell} />
+				<Route path="/putIn" component={putIn} />
+        <Route path="/myBorrow" component={myBorrow} />
 
 			</div>
 		</Router >
