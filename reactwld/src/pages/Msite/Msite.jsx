@@ -113,18 +113,18 @@ class Msite extends Component {
     
 //生命周期
    
-    componentDidMount (){
-    		window.addEventListener('scroll', this.scrolltop.bind(this))
-
+   componentDidMount (){
+  window.addEventListener('scroll', this.scrolltop.bind(this))
     }
     componentWillUnmount() {
-     window.onscroll = '';
-     
+     window.removeEventListener('scroll', this.scrolltop.bind(this))
     }
     render() {
+    	
         return (
             <div id="app" style={{position:'relative'}}>
-            <div style={{position:'relative'}}>
+            <div style={{position:'relative'}} id="uuuu">
+            
         <div className="header">
             <div className="logo">
                 <a href="index.html"><img src="../../assets/logo1.png" alt=""/></a>
