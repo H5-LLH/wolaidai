@@ -36,7 +36,8 @@ class Msite extends Component {
                 src: 'https://m.wolaidai.com/msite/assets/img/sec_03_item_04.png',
                 item_tit: '机器学习',
                 item_text: '深度学习快速迭代'
-            }]
+            }],
+            wodeTop:123
         }
     }
 
@@ -79,10 +80,8 @@ class Msite extends Component {
    }
 
    scrolltop(){
-     
-     if(this.props.path==="/msite/"){
-     
-     if(document.documentElement.scrollTop>this.refs.peo.offsetTop+this.refs.peo1.offsetTop-document.documentElement.clientHeight){
+	let ttop = this.refs.peo.offsetTop+this.refs.peo1.offsetTop-document.documentElement.clientHeight
+     if(document.documentElement.scrollTop> ttop){
         const self=this;
         if(this.state.getting){
             axios.get('https://marketing.wolaidai.com/marketing/statistics/summary')
@@ -108,7 +107,6 @@ class Msite extends Component {
         }
           
      }
- }
    }
 
 
@@ -116,7 +114,8 @@ class Msite extends Component {
 //生命周期
    
     componentDidMount (){
-     window.addEventListener('scroll', this.scrolltop.bind(this))
+    		window.addEventListener('scroll', this.scrolltop.bind(this))
+
     }
     componentWillUnmount() {
      window.onscroll = '';
@@ -125,6 +124,7 @@ class Msite extends Component {
     render() {
         return (
             <div id="app" style={{position:'relative'}}>
+            <div style={{position:'relative'}}>
         <div className="header">
             <div className="logo">
                 <a href="index.html"><img src="../../assets/logo1.png" alt=""/></a>
@@ -338,7 +338,7 @@ class Msite extends Component {
         </div>
 
         <div className={this.state.isShowNav?'mask':'mask hide'}></div>
-
+			</div>
       </div>
         );
     }
