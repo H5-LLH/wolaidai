@@ -1,5 +1,9 @@
+.a{
+	
+
 html{
-  font-family: PingFangSC-Regular,"微软雅黑";
+  font-family: PingFangSC-Regular,"寰蒋闆呴粦";
+  font-size: 100%;
 }
 .home-wrap {
   background: #ffffff;
@@ -24,7 +28,7 @@ img {
 }
 
 
-/*新增*/
+/*鏂板*/
 
 .home-header .c-list-wrap,
 .dejdd-wrap .c-list-wrap{
@@ -83,23 +87,23 @@ img {
   vertical-align: middle
 }
 
-/*手机分期*/
+/*鎵嬫満鍒嗘湡*/
 .hot-rent-box{
   /* border-top: 0.14rem solid #f2f2f2; */
   /* background: #FFF; */
   font-family: PingFangSC-Regular;
   position: absolute;
-  top: 2.6rem;
+  top: 8.6rem;
   width: 100%;
   z-index: 111;
 }
 .rent-title{
   color: #000;
-  font-size: .3rem;
+  font-size: 0.5rem;
   display: -webkit-flex;
   display: flex;
   justify-content: space-between;
-  padding: .26rem .35rem .19rem
+  padding: .52rem .35rem .19rem
 }
 .hot-title{
   color: #000;
@@ -114,7 +118,7 @@ img {
 }
 .hot-title h2{
   display: inline-block;
-  line-height: .375rem
+  line-height: .75rem
 }
 .hot-rent-cont {
   text-align: center;
@@ -138,7 +142,7 @@ img {
 }
 .hot-rent-cont img {
   max-width: 100%;
-  width: 1.06rem;
+  width: 3.06rem;
   margin-bottom: 0.26rem;
 }
 .hot-mobile{
@@ -146,7 +150,7 @@ img {
   font-size: .28rem;
   background: #FFF;
   /* margin-top: -0.24rem; */
-  border-top: 0.14rem solid #f2f2f2;
+  border-top: 0.44rem solid #f2f2f2;
 }
 .hot-mobile .hot-title {
   padding: .3rem .35rem .15rem;
@@ -164,22 +168,22 @@ img {
   margin: -0.1rem auto 0;
 }
 .hot-mobile .swiper-wrapper {
-  padding: 0.24rem 0 0.6rem;
+  padding: 0.48rem 0 1.2rem;
 }
 .hot-mobile .swiper-wrapper .swiper-slide:last-child {
   margin-right: 0.24rem;
 }
 .hot-mobile .swiper-wrapper .swiper-slide:first-child {
-  margin-left: 0.24rem;
+  margin-left: 0.96rem;
 }
 .hot-mobile .swiper-slide {
   text-align: center;
-  width: 2.8rem;
+  width: 7.8rem;
   /* width: 2.3rem; */
-  margin-left: 0.16rem;
+  margin-left: 0.48rem;
   display: block;
   background: #fff;
-  box-shadow: 0 0 0.25rem 0.05rem rgba(197, 194, 212, 0.5);
+  box-shadow: 0 0 0.45rem 0.2rem rgba(197, 194, 212, 0.5);
   border-radius: 0.1rem;
   padding: 0.4rem 0.01rem 0.2rem;
 }
@@ -193,22 +197,22 @@ img {
 .hot-mobile .top-tips{
   position: absolute;
   left: 0.19rem;
-  top: -0.4rem;
-  width: 0.6rem;
+  top: -0.6rem;
+  width: 1.6rem;
 }
 .hot-mobile .limit-time {
-  width: 0.8rem;
-  height: 0.77rem;
+  width: 1.8rem;
+  height: 1.77rem;
   text-align: center;
-  font-size: 0.36rem;
+  font-size: 0.72rem;
   color: #fff;
-  background: url('https://mf.wolaidai.com/financial-life/home/img/new4/Shape@2x.png') no-repeat;
+  background: url('../img/Shape2x.png') no-repeat;
   background-size: cover;
   position: absolute;
   right: 0.1rem;
   top: -0.3rem;
   /* padding: 0.2rem 0; */
-  line-height: 0.77rem;
+  line-height: 1.77rem;
 }
 .hot-mobile .img {
   /* height: 1.682rem; */
@@ -219,7 +223,7 @@ img {
   /* max-height: 1.682rem; */
   /* height: 1.682rem; */
 
-  height: 1.8rem;
+  height: 5.8rem;
   width: auto;
 }
 .hot-mobile .img .oppo-img {
@@ -254,7 +258,7 @@ img {
   font-weight: 600;
 }
 .hot-mobile-info .price {
-  line-height: 0.42rem;
+  line-height: 0.84rem;
   /* margin-top: 0.17rem; */
   /* color: #F66438; */
   color: #F82923;
@@ -262,8 +266,8 @@ img {
   text-align: center
 }
 .hot-mobile-info .name {
-  line-height: 0.4rem;
-  height: 0.4rem;
+  line-height: 1.4rem;
+  height: 1.4rem;
   font-size: 0.24rem;
   color: #000;
   text-align: center;
@@ -277,7 +281,7 @@ img {
 }
 
 .count-time {
-  margin-left: 1rem;
+  margin-left: 3rem;
   font-size: 100%;
   text-align: center;
   font-family: PingFang-SC-Medium;
@@ -288,16 +292,16 @@ img {
   font-weight: 900;
   background: #F82923;
   color: #fff;
-  margin: 0 .03rem;
-  border-radius: .02rem;
+  margin: 0 .06rem;
+  border-radius: .04rem;
   box-sizing: border-box;
-  width: .5rem;
-  padding: .03rem .03rem;
+  width: 1.4rem;
+  padding: .06rem .06rem;
   display: inline-block;
   text-align: center;
 }
 
-/* 精选大牌start */
+/* 绮鹃€夊ぇ鐗宻tart */
 .featured-wrap {        
   width: 100%;
   padding: 0 .13rem .37rem;
@@ -351,7 +355,7 @@ img {
 .featured-wrap .img img {
   height: 1.17rem;
 }
-/* 精选大牌end */
+/* 绮鹃€夊ぇ鐗宔nd */
 .item-box .img img{
   height: 1.92rem;
 }
@@ -396,7 +400,7 @@ img {
   font-family: PingFang-SC-Medium;
   font-size: .24rem
 }
-/*信用卡模块*/
+/*淇＄敤鍗℃ā鍧�*/
 .credit-card-title{
   padding:0 .35rem;
   font-size: 0.32rem;
@@ -421,7 +425,7 @@ img {
   line-height: .3rem;
   margin-left: .03rem;
   display: inline-block;
-  background: url('') no-repeat center center;
+  /*background: url('../home/img/bracket-orange.png') no-repeat center center;*/
   -webkit-background-size: 100%;
   background-size: 100%;
   margin-top: .01rem
@@ -440,7 +444,7 @@ img {
   -moz-border-radius: 50%;
   border-radius: 50%;
 }
-/*银行中心*/
+/*閾惰涓績*/
 .bank-icon-box{
   /* height: 3.6rem; */
   /* overflow: hidden; */
@@ -458,7 +462,7 @@ img {
   width: 0.6rem;
   height: 0.27rem;
   line-height: 0.27rem;
-  background: url(https://mf.wolaidai.com/financial-life/home/img/bank-icon/comb.png) no-repeat;
+ /* background: url(img/bank-icon/comb.png) no-repeat; */
   top: 0;
   background-size: 100%;
   right: -0.15rem;
@@ -469,21 +473,21 @@ img {
   position: relative;
 }
 .high-mark:before {
-  content: '秒批';
-  /*content: '高额';*/
+  content: '绉掓壒';
+  /*content: '楂橀';*/
 }
 .mp-mark:before {
-  content: '高额';
-  /*content: '秒批';*/
+  content: '楂橀';
+  /*content: '绉掓壒';*/
 }
 .tj-mark:before {
-  content: '推荐';
+  content: '鎺ㄨ崘';
 }
 .hot-mark:before {
-  content: '火爆';
+  content: '鐏垎';
 }
 .zh-mark:before {
-  content: '最红';
+  content: '鏈€绾�';
 }
 .icon-box img {
   height: 0.8rem;
@@ -534,7 +538,7 @@ img {
   border-bottom: .1rem solid transparent;
   border-right: .12rem solid transparent;
 }
-/*主题精选*/
+/*涓婚绮鹃€�*/
 .credit-card-contentInfo{
   padding: 0 0.35rem;
   position: relative;
@@ -602,7 +606,7 @@ img {
 .credit-card-item .c3{
   color: #7CD5A8;
 }
-/*热门卡片*/
+/*鐑棬鍗＄墖*/
 .hot-card-box {
   display: -webkit-box;
   display: -moz-box;
@@ -658,7 +662,7 @@ img {
   color: #FF5D3D;
 }
 
-/*修改省市区样式*/
+/*淇敼鐪佸競鍖烘牱寮�*/
 .title,.bar .button-link{
   line-height: 0.88rem;
   font-size: 0.3rem;
@@ -713,7 +717,7 @@ img {
 .bar + .picker-items{
   height: 4.32rem;
 }
-/*新增结束*/
+/*鏂板缁撴潫*/
 
 .home-wrap .home-header .h-item {
   -moz-box-flex: 1;
@@ -744,22 +748,22 @@ img {
 }
 
 .home-wrap .home-header .h-item .h-icon-1 {
-  background: url(https://mf.wolaidai.com/financial-life/home/img/jdxfd.png) no-repeat top center;
+  /* background: url(img/jdxfd.png) no-repeat top center; */
   background-size: 1.1rem;
 }
 
 .home-wrap .home-header .h-item .h-icon-2 {
-  background: url(https://mf.wolaidai.com/financial-life/home/img/xykcs.png) no-repeat top center;
+  /* background: url(img/xykcs.png) no-repeat top center; */
   background-size: 1.1rem;
 }
 
 .home-wrap .home-header .h-item .h-icon-3 {
-  background: url(https://mf.wolaidai.com/financial-life/home/img/sjd.png) no-repeat top center;
+  /* background: url(img/sjd.png) no-repeat top center; */
   background-size: 1.1rem;
 }
 
 .home-wrap .banner-wrap {
-  height: 5.04rem;
+  /* height: 5.04rem; */
   position: relative;
 }
 
@@ -809,13 +813,13 @@ img {
 
 .home-wrap .card-type-wrap .icon-right-1 {
   margin-right: 0.25rem;
-  background: url(https://mf.wolaidai.com/financial-life/home/img/zx.png) no-repeat top center;
+  /* background: url(img/zx.png) no-repeat top center; */
   background-size: 80%;
 }
 
 .home-wrap .card-type-wrap .icon-right-2 {
   margin-right: 0.45rem;
-  background: url(https://mf.wolaidai.com/financial-life/home/img/bxrk.png) no-repeat top center;
+  /* background: url(img/bxrk.png) no-repeat top center; */
   background-size: 100%;
 }
 
@@ -993,7 +997,7 @@ img {
 .beforeSub:before {
   content: '';
   position: absolute;
-  background: url(https://mf.wolaidai.com/financial-life/home/img/20180520.png) no-repeat top left;
+  /*background: url(img/20180520.png) no-repeat top left;*/
   -webkit-background-size: 100%;
   background-size: 100%;
   width: 1.4rem;
@@ -1004,7 +1008,7 @@ img {
 }
 
 .ded-wrap {
-  background: url(https://mf.wolaidai.com/financial-life/home/img/ded.png) no-repeat;
+  /* background: url(img/ded.png) no-repeat; */
   width: 6.7rem;
   height: 1.5rem;
   background-size: 100%;
@@ -1035,7 +1039,7 @@ img {
   line-height: .3rem;
   margin-left: .03rem;
   display: inline-block;
-  background: url('') no-repeat center center;
+ /* background: url('../home/img/bracket-orange.png') no-repeat center center;*/
   -webkit-background-size: 100%;
   background-size: 100%;
   margin-top: .01rem;
@@ -1061,7 +1065,7 @@ img {
 
 .note-broadcast{
   display: inline-block;
-  background-image: url(https://mf.wolaidai.com/financial-life/home/img/broadcast@2x.png);
+  /*background-image: url(img/broadcast@2x.png);*/
   background-size: contain;
   background-repeat: no-repeat;
   height: .3rem;
@@ -1069,7 +1073,7 @@ img {
 }
 .note-close{
   display: inline-block;
-  background-image: url(https://mf.wolaidai.com/financial-life/home/img/close@2x.png);
+ /* background-image: url(img/close@2x.png);*/
   background-size: contain;
   background-repeat: no-repeat;
   height: .2rem;
@@ -1079,30 +1083,30 @@ img {
 .note-redpackage{
   display: block;
   width: 1.52rem;
-  height:1.6rem;
+  height: 2.42rem;
   /* background-image: url(img/newiphonexr_tips.png); */
   /* background-image: url(img/redpackage@2x.png); */
   /* background-image: url(img/new-tip.png); */
-  background-image: url(https://mf.wolaidai.com/financial-life/home/img/tips.png);
+  /*background-image: url(img/11/aside_tips.png);*/
   background-size: contain;
   background-repeat: no-repeat;
 }
 .note-redpackage-iphonexr{
   width: 1.52rem;
   height: 2.42rem;
-  background-image: url(https://mf.wolaidai.com/financial-life/home/img/iphonexr-tips.png);
+  /* background-image: url(img/iphonexr-tips.png); */
   background-size: contain;
   background-repeat: no-repeat;
 }
 .note-redpackage-hw{
   width: 1.5rem;
   height: 1.59rem;
-  background-image: url(https://mf.wolaidai.com/financial-life/home/img/tips-hwmate20.png);
+  /* background-image: url(img/tips-hwmate20.png); */
   background-size: contain;
   background-repeat: no-repeat;
 }
 .note-close-package{
-  background-image: url(https://mf.wolaidai.com/financial-life/home/img/close-rp@2x.png);
+  /* background-image: url(img/close-rp@2x.png); */
   background-size: contain;
   background-repeat: no-repeat;
   position: absolute;
@@ -1117,7 +1121,7 @@ img {
   right: 0.28rem;
   z-index: 99
 }
-/* 弹窗样式--rookie */
+/* 寮圭獥鏍峰紡--rookie */
 #popup-window,.popup-layer{
   position:fixed;
   left:0;
@@ -1140,7 +1144,7 @@ img {
 #popup-window>div.info{
   width:6.49rem;
   height:6.15rem;
-  background:url('https://mf.wolaidai.com/financial-life/home/img/tankuang.png') no-repeat center top;
+  /* background:url('./img/tankuang.png') no-repeat center top; */
   background-size:100% auto;
   font-size:0.32rem;
   font-weight:600;
@@ -1169,10 +1173,10 @@ img {
   margin:0.8rem auto 0;
   width:0.5rem;
   height:0.5rem;
-  background:url('https://mf.wolaidai.com/financial-life/home/img/close-rp@2x.png') no-repeat center top;
+  /* background:url('./img/close-rp@2x.png') no-repeat center top; */
   background-size:100% auto;
 }
-/* 动画 */
+/* 鍔ㄧ敾 */
 .icon-animation{
   -webkit-animation:icon 1s linear;
   -moz-animation:icon 1s linear;
@@ -1270,15 +1274,15 @@ img {
     transform:translate(3rem,4rem) scale(0)
   }
 }
-/* 秒杀活动 */
+/* 绉掓潃娲诲姩 */
 .popup-layer .pupup-content {
   position: absolute;
   top: 3.24rem;
-  width: 6.4rem;
-  height: 5.6rem;
+  width: 5.41rem;
+  height: 6.48rem;
   left: 50%;
-  transform: translate(-50%,0);
-  background: url(https://mf.wolaidai.com/financial-life/home/home/img/pop.png) no-repeat top center;
+  margin-left: -2.705rem;
+  /*background: url(../home/img/11/pop.png) no-repeat top center;*/
   -webkit-background-size: 100%;
   background-size: 100%;
   padding-top: 4.57rem
@@ -1306,10 +1310,10 @@ img {
   top: -1.1rem;
   width:0.5rem;
   height:0.5rem;
-  background:url('https://mf.wolaidai.com/financial-life/home/img/close-rp@2x.png') no-repeat center top;
+/*  background:url('./img/close-rp@2x.png') no-repeat center top;*/  
   background-size:100% auto;
 }
-/* 提示去绑卡弹窗 */
+/* 鎻愮ず鍘荤粦鍗″脊绐� */
 .popup-layer .pupup-content-bind-card {
   position: absolute;
   top: 3rem;
@@ -1327,7 +1331,7 @@ img {
   position: relative;
   width: 100%;
   height: 2.26rem;
-  background: url('https://mf.wolaidai.com/financial-life/home/img/bind-card-bg.png') center top no-repeat;
+  /* background: url('./img/bind-card-bg.png') center top no-repeat; */
   background-size: 100%;
   text-align: center;
   color: #fff;
@@ -1383,7 +1387,7 @@ img {
   top: 0.1rem;
   width:0.5rem;
   height:0.5rem;
-  background:url('https://mf.wolaidai.com/financial-life/home/img/close-white.png') no-repeat center center;
+  /* background:url('./img/close-white.png') no-repeat center center; */
   background-size: 0.24rem;
 }
 /* vconsole */
@@ -1413,7 +1417,7 @@ img {
 }
 
 
-/* 运营位 start */
+/* 杩愯惀浣� start */
 .clear:after {
   content: '';
   clear: both;
@@ -1422,7 +1426,7 @@ img {
 
 .operation-bit {
   padding: 0.2rem 0.4rem 0;
-  border-top: 0.14rem solid #f2f2f2;
+  border-top: 0.44rem solid #f2f2f2;
 }
 
 .operation-bit-banner {
@@ -1456,12 +1460,12 @@ img {
 .operation-bit  .part-right .part-item {
   width: 50%;
 }
-/* 运营位 end */
+/* 杩愯惀浣� end */
 
-/* 大额简单贷 start */
+/* 澶ч绠€鍗曡捶 start */
 .dejdd-wrap {
   text-align: center;
-  border-top: 0.14rem solid #f2f2f2;
+  border-top: 0.4rem solid #f2f2f2;
   font-size: 0.28rem;
   color: #F97E4C;
 }
@@ -1494,19 +1498,19 @@ img {
   /* background-image: linear-gradient(-90deg, #FA804D 6%, #FC925F 100%); */
   background-image: linear-gradient(-90deg, #FF6D27 6%, #FFC42D 100%);
   box-shadow: 0 4px 28px 2px rgba(254,167,106,0.50);
-  border-radius: 0.4rem;
+  border-radius: 1.4rem;
   display: inline-block;
   color: #fff;
-  width: 5rem;
-  line-height: 0.82rem;
+  width: 15rem;
+  line-height: 1.82rem;
   margin: 0.32rem 0 0.6rem;
 }
-/* 大额简单贷 end */
+/* 澶ч绠€鍗曡捶 end */
 
 
-/* 为您推荐 start */
+/* 涓烘偍鎺ㄨ崘 start */
 .recommend-wrap {
-  border-top: 0.14rem solid #f2f2f2;
+  border-top: 0.48rem solid #f2f2f2;
   font-size: 0.2rem;
   text-align: center;
 }
@@ -1520,17 +1524,17 @@ img {
   font-size: 0.3rem;
   color: #333333;
   padding: 0.44rem 0 0.2rem;
-  line-height: 0.42rem;
+  line-height: 1rem;
 }
 .recommend-cont .item img{
   height: 2rem;
   margin-bottom: 0.3rem;
 }
 .recommend-cont .item .hw-img{
-  height: 2.4rem;
+  height: 7.4rem;
   position: relative;
-  top: -0.16rem;
-  margin-bottom: 0.01rem;
+  top: 0.2rem;
+  margin-bottom: 0.2rem;
 }
 
 .recommend-cont .good-price {
@@ -1553,4 +1557,5 @@ img {
   position: relative;
   top: 0.02rem;
 }
-/* 为您推荐 end */
+}
+/* 涓烘偍鎺ㄨ崘 end */
