@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom"; //跳转路由
-import './Apply.css';
+import './PutIn.css';
 import '../../assert/css/base.css';
 //引入顶部图片
 import logo from '../../assert/img/logo.png';
@@ -11,7 +11,7 @@ import loan from '../../assert/img/loan.png';
 import service from '../../assert/img/service.png';
 import coupon from '../../assert/img/coupon.png';
 
-class Apply extends Component {
+class PutIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -227,4 +227,4 @@ times(index){
         );
     }
 }
-export default Apply;
+export default PutIn;

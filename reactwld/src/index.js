@@ -17,8 +17,9 @@ import xsell from './pages/Xsell/Xsell.jsx';
 //引入车险消费分期
 import insurance from './pages/Insurance/Insurance.jsx';
 //引入申请大额贷款
-import apply from './pages/Apply/Apply.jsx';
-
+import putIn from './pages/PutIn/PutIn.jsx';
+//引入我的贷款
+import myBorrow from './pages/MyBorrow/MyBorrow.jsx';
 //引入ant的css样式
 import 'antd/dist/antd.css';
 import * as serviceWorker from './serviceWorker';
@@ -56,7 +57,8 @@ ReactDOM.render(
 				<Route path="/financialLife" component={financialLife} />
         <Route path="/insurance" component={insurance} />
 			  <Route path="/xsell" component={xsell} />
-				<Route path="/apply" component={apply} />
+				<Route path="/putIn" component={putIn} />
+        <Route path="/myBorrow" component={myBorrow} />
 			</div>
 		</Router >
 	</Provider>

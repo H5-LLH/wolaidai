@@ -168,7 +168,19 @@ class FinancialLife extends Component {
     }
 
 ShowTime(){
-	var d2 = new Date("2018/11/22 00:00");
+				
+				let nowT = new Date();
+				let endTime = nowT.getDate()+1;
+				let endMonth = nowT.getMonth()+1;//获取月份是从0开始的,0~11
+				if(nowT.getDate()>=31){
+					endTime=1;
+					endMonth+=1;
+				}
+				
+				console.log(endTime);
+				console.log(endMonth);
+				let isTimeString = "2018/"+endMonth+"/"+endTime+" 00:00";//使倒计时时间永远为当前时间距离第二天零点的时间
+				let d2 = new Date(isTimeString);
 				this.makeTime = setInterval(()=>{
 					let now = new Date();{/*得到电脑当前时间*/}
 					let offset = Math.floor((d2.getTime() - now.getTime())/1000);{/*获取毫秒计数时必须除毫秒1000；拿到距离秒杀时间还剩 多少秒*/}
