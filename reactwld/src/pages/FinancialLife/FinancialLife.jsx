@@ -219,6 +219,7 @@ ShowTime(){
     return (
 			<div className="home-wrap content-inner">
 				{/*轮播图*/}
+				<div style={{position:"relative"}}>
 				<div className="banner-wrap">
 					
 						<div >
@@ -250,6 +251,7 @@ ShowTime(){
 								})
 							})()}
 						</div>
+				</div>
 				</div>
 				{/*大额简单贷*/}
 				<div className="dejdd-wrap">   

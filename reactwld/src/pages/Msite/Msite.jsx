@@ -80,8 +80,8 @@ class Msite extends Component {
    }
 
    scrolltop(){
-	let ttop = this.refs.peo.offsetTop+this.refs.peo1.offsetTop-document.documentElement.clientHeight
-     if(document.documentElement.scrollTop> ttop){
+
+     if(document.documentElement.scrollTop>this.refs.peo.offsetTop+this.refs.peo1.offsetTop-document.documentElement.clientHeight){
         const self=this;
         if(this.state.getting){
             axios.get('https://marketing.wolaidai.com/marketing/statistics/summary')
@@ -108,15 +108,14 @@ class Msite extends Component {
           
      }
    }
-
-
-    
+ 
 //生命周期
    
    componentDidMount (){
-  window.addEventListener('scroll', this.scrolltop.bind(this))
+  		window.addEventListener('scroll', this.scrolltop.bind(this))
     }
-    componentWillUnmount() {
+
+    componentWillUnmoun() {
      window.removeEventListener('scroll', this.scrolltop.bind(this))
     }
     render() {
@@ -141,11 +140,11 @@ class Msite extends Component {
                     </div>
                     <div className="nav-item">
                         <div className="nav-item-1 noactive fadeInRight1 transform2" >信贷产品 <span></span></div>
-                        <a className="nav-item-2 fadeInRight1 transform3"  id="loan" >消费信贷</a>
+                        <Link to="/jddv3/apply" className="nav-item-2 fadeInRight1 transform3"  id="loan" >消费信贷</Link>
                         
 
-                        <a className="nav-item-2 fadeInRight1 transform4"  >消费分期</a>
-                        <a className="nav-item-2 fadeInRight1 transform5"  >信用租赁</a>
+                        <Link to="/financialLife" className="nav-item-2 fadeInRight1 transform4"  >消费分期</Link>
+                        <Link to="/credit/index" className="nav-item-2 fadeInRight1 transform5"  >信用租赁</Link>
                     </div>
                     <div className="nav-item">
                         <a className="nav-item-1 fadeInRight1 transform6"  >热门推荐</a>
@@ -207,7 +206,7 @@ class Msite extends Component {
             </div>
         </div>
 
-        <div className="section counts-section" ref="peo1">
+        <div className="section counts-section" id="lll" ref="peo1">
             <h1 className="rotate-lines pos-rel">千亿级别金融平台</h1>
             <p>为超过3000万用户提供金融服务</p>
 
@@ -215,7 +214,7 @@ class Msite extends Component {
                 <div className="item">
                     <div className="count-number">
                         <img src="https://m.wolaidai.com/msite/assets/img/section-04-icon-01.svg"  />
-                        <strong className="applied" id="applied" ref='peo'>
+                        <strong className="applied"  ref='peo'>
 
                         <CountUp start={0} end={this.state.peopleNumber} duration={3} formattingFn={this.milion } /></strong>
 

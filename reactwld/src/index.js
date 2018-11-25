@@ -50,10 +50,26 @@ import * as serviceWorker from './serviceWorker';
 
 //创建store仓库
 const store = createStore(function(state = {
+
   count: 0,
   navId:6666,
   confirmArr:"nihao",
-  confirmImg:""
+  confirmImg:"",
+
+  longtime:'',
+  allmoney:'',
+  name:'',
+  idcard:'',
+  jointime:'',
+  workplace:'',
+  education:'',
+  nowplace:'',
+  connect:'',
+  phonenumber:'',
+  creditcardnumber:''
+
+
+
 }, action) {
   const count = state.count
   switch (action.type) {
@@ -69,6 +85,34 @@ const store = createStore(function(state = {
       return {
         ...state,
         confirmArr: action.confirmArr
+      };
+    case 'step1':
+      return {
+        ...state,
+        longtime: action.longtime,
+        allmoney:action.allmoney
+      };
+    case 'step2':
+      return {
+        ...state,
+        name: action.name,
+        idcard:action.idcard
+      };
+      case 'step3':
+      return {
+        ...state,
+        name: action.name,
+        jointime:action.jointime,
+        workplace:action.workplace,
+        education:action.education,
+        nowplace:action.nowplace,
+        connect:action.connect,
+        phonenumber:action.phonenumber
+      };
+      case 'step4':
+      return {
+        ...state,
+        creditcardnumber:action.creditcardnumber
       };
     default:
       return state
@@ -90,7 +134,7 @@ ReactDOM.render(
 				
 				
 			
-				<Route path="/msite/" component={Msite} />
+				<Route exact path="/" component={Msite} />
        
 				<Route path="/jddv3/apply" component={Apply} />
         <Route path="/jddv3/idVerification" component={idVerification} />
@@ -101,7 +145,7 @@ ReactDOM.render(
 
 
 
-				<Route exact path="/" component={home} />
+				
 				<Route path="/financialLife" component={financialLife} />
         <Route path="/insurance" component={insurance} />
 			  <Route path="/xsell" component={xsell} />

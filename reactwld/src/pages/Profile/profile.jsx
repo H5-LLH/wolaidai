@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 import '../Apply/apply.css';
 import '../Apply/apply1.css';
+import { connect} from 'react-redux';
+
 
 class profile extends Component {
   constructor(props){
@@ -257,7 +259,7 @@ class profile extends Component {
                     </div>
                     <div data-role="form-group" className="FormGroup___2qhXh arrowRight">
                         <div className="FormGroup___Rc1SA"><label>入职时间</label>
-                            <div className="DateSelect___1oGpe"><span className="DateSelect___oQKnc"  onClick={this.showtime.bind(this)} >{this.state.yearNumber}年 {this.state.monthNumber} 月</span>
+                            <div className="DateSelect___1oGpe"><span className="DateSelect___oQKnc" ref='jointime'  onClick={this.showtime.bind(this)} >{this.state.yearNumber}年 {this.state.monthNumber} 月</span>
                             <i className="iconfont icon-xinyongrenzhengyetiaozhuan DateSelect___1_1Oe"></i>
                                 <div className={this.state.showtime?'Modal___3X1Gj Modal___U3o4P':"Modal___3X1Gj Modal___1rt0o"}>
                                     <div className="DateSelect___3YSsQ">
@@ -296,7 +298,7 @@ class profile extends Component {
                     </div>
                     <div data-role="form-group" className="FormGroup___2qhXh arrowRight">
                         <div className="FormGroup___Rc1SA" ><label>单位地址</label>
-                            <div className="Location___1dShG" ><span className="Location___1_K-1" onClick={this.showadress.bind(this)}>{this.state.province} {this.state.area1} {this.state.area2}</span>
+                            <div className="Location___1dShG" ><span ref='workplace' className="Location___1_K-1" onClick={this.showadress.bind(this)}>{this.state.province} {this.state.area1} {this.state.area2}</span>
                             <i className="iconfont icon-xinyongrenzhengyetiaozhuan Location___2nq8r"></i>
                                 <div className={this.state.showadress?'Modal___3X1Gj Modal___U3o4P':"Modal___3X1Gj Modal___1rt0o"}>
                                     <div className="Location___1JRyr">
@@ -376,7 +378,7 @@ class profile extends Component {
                             <div className="Select___1uNMg">
                                 <div className="Select___3CZzX"><i className="Select___2tk0N"></i></div>
                             </div><select className="Select___3O2LI Select___31_AX">
-                                <option value="">请选择学历</option>
+                                <option value="" ref='education'>请选择学历</option>
                                 <option value="10">高中及以下</option>
                                 <option value="4">中专</option>
                                 <option value="5">大专</option>
@@ -391,7 +393,7 @@ class profile extends Component {
             <div className="section">
                 <div data-role="form-group" className="FormGroup___2qhXh arrowRight">
                     <div className="FormGroup___Rc1SA"><label >现居住地</label>
-                        <div className="Location___1dShG"><span onClick={this.nowshowadress.bind(this)} className="Location___1_K-1">{this.state.nowprovince} {this.state.nowarea1} {this.state.nowarea2}</span>
+                        <div className="Location___1dShG"><span ref="nowplace" onClick={this.nowshowadress.bind(this)} className="Location___1_K-1">{this.state.nowprovince} {this.state.nowarea1} {this.state.nowarea2}</span>
                         <i className="iconfont icon-xinyongrenzhengyetiaozhuan Location___2nq8r"></i>
                             <div className={this.state.nowshowadress?'Modal___3X1Gj Modal___U3o4P':"Modal___3X1Gj Modal___1rt0o"}>
                                 <div className="Location___1JRyr">
@@ -478,17 +480,17 @@ class profile extends Component {
                 </div>
                 <div data-role="form-group" className="FormGroup___2qhXh">
                     <div className="FormGroup___Rc1SA"><label>联系人</label>
-                        <div data-role="xlib-input" className="Input___3_uXR" ><input placeholder="请填写联系人真实姓名" maxLength="10" className="Input___3w_BR" /></div>
+                        <div data-role="xlib-input" className="Input___3_uXR" ><input ref='connect' placeholder="请填写联系人真实姓名" maxLength="10" className="Input___3w_BR" /></div>
                     </div>
                 </div>
                 <div data-role="form-group" className="FormGroup___2qhXh">
                     <div className="FormGroup___Rc1SA"><label>手机号码</label>
-                        <div data-role="xlib-input" className="Input___3_uXR" ><input placeholder="请填写联系人11位手机号" maxLength="11" className="Input___3w_BR" /></div>
+                        <div data-role="xlib-input" className="Input___3_uXR" ><input ref='phonenumber' placeholder="请填写联系人11位手机号" maxLength="11" className="Input___3w_BR" /></div>
                     </div>
                 </div>
             </div>
             <div className="tips">* 我来贷向您承诺：不会泄露您的借款信息</div>
-            <div className="actions"><Link to="/jddv3/otherProveAuth" className="btn theme-classNameic font-color-white bg-color border-color box-shadow">提交极速审核</Link ></div>
+            <div className="actions"><Link to="/jddv3/otherProveAuth" className="btn theme-classNameic font-color-white bg-color border-color box-shadow"   onClick={this.props.step3.bind(this)}>提交极速审核</Link ></div>
             <div className="popup" style={{display:'none'}}>
                 <div className="alert AlertPromptDialog___3q22C">
                     <div className="theme-classNameic img-auditing-bg AlertPromptDialog___1v-bS">
@@ -509,4 +511,28 @@ class profile extends Component {
   }
 }
 
-export default profile;
+export default connect((state)=>{
+    return state
+},(dispatch)=>{
+    return {
+        // 定义了一个函数
+        step3(){
+           
+            dispatch({
+                type:"step3",
+                
+                
+                work:this.state.recommend,
+                jointime:this.refs.jointime.value,
+                workplace:this.refs.workplace.value,
+                education:this.refs.education.value,
+                nowplace:this.refs.nowplace.value,
+                connect:this.refs.connect.value,
+                phonenumber:this.refs.phonenumber.value
+
+            })
+
+        }
+        
+    }
+})(profile);

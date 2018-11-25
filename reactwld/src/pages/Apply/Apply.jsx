@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-
+import { connect} from 'react-redux';
 
 import './apply.css';
 import './apply1.css';
@@ -10,11 +10,13 @@ import './change.css';
 class Apply extends Component {
     constructor(props) {
         super(props);
-
+        this.props = props;
         this.state = {
             text: '',
             data: '',
-            plan: ''
+            plan: '',
+            longtime:'',
+
         }
     }
     handelChange(e) {
@@ -64,13 +66,17 @@ class Apply extends Component {
         this.setState({
             plan: {
                 "min_installment": filtered[0].min_installment,
-                "max_installment": filtered[0].max_installment
-            }
+                "max_installment": filtered[0].max_installment,
+                
+            },
+            longtime: e.target.value
         })
         console.log(this.state.plan.min_installment)
 
     }
     componentWillMount() {
+        
+
         React.axios.get("https://japi.wolaidai.com/jrocket2/api/v4/installments")
             .then((response) => {
                 console.log(response)
@@ -83,7 +89,9 @@ class Apply extends Component {
                 console.log(error);
             });
     }
-
+    componentDidUpdate(){
+      console.log(this.props)
+    }
 
 
 
@@ -114,6 +122,7 @@ class Apply extends Component {
                           <div data-role="xlib-input" className="Input___3_uXR" ><input  onChange={this.handelChange.bind(this)} value={this.state.text} type="tel" maxLength="5" placeholder="最低5000元，且为500倍数" name="amount" className="Input___3w_BR"  /><span className="Input___3mXBX">{
                             (()=>{
                               console.log(this.state.text)
+
 
                                 if(this.state.text.toString().length>0){
                                   if(parseInt(this.state.text)>=5000){
@@ -196,7 +205,7 @@ class Apply extends Component {
                       </div>
                   </div>
               </div>
-               <div className="btn-box"><Link to={{ pathname: '/jddv3/idVerification', query: { name: 'ryan' } }} className="btn theme-classNameic font-color-white bg-color border-color box-shadow">立即申请</Link>
+               <div className="btn-box"><Link to={{ pathname: '/jddv3/idVerification' }} onClick={this.props.step1.bind(this)} className="btn theme-classNameic font-color-white bg-color border-color box-shadow">立即申请</Link>
                
 
 
@@ -231,4 +240,20 @@ class Apply extends Component {
     }
 }
 
-export default Apply;
+export default connect((state)=>{
+    return state
+},(dispatch)=>{
+    return {
+        // 定义了一个函数
+        step1(){
+           
+            dispatch({
+                type:"step1",
+                longtime:this.state.longtime,
+                allmoney:this.state.text
+            })
+
+        }
+        
+    }
+})(Apply);
