@@ -192,11 +192,11 @@ class Msite extends Component {
                         <h3 className="item_tit">信用租赁</h3>
                     </div>
                 </Link>
-                <a >
+                <Link to="/financialLife">
                     <div className="item item3">
                         <h3 className="item_tit">热门推荐</h3>
                     </div>
-                </a>
+                </Link>
                 <a >
                     <div className="item item4">
                         <h3 className="item_tit">消费分期</h3>
