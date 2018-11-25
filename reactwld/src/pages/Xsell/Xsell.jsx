@@ -84,8 +84,9 @@ login(){
                                     </div>
                                     <div id="error-msg" className="m-tip" style={{color: "#fff"}}></div>
                                     <div className="m-form-row no-b" style={{height: "2rem"}}>
-                                     
+                                      <a href = {'http://localhost:3000/#/putIn'}>
                                         <button className="btn-login" onClick={this.login.bind(this)}>立即领取</button>
+                                      </a>
                       
                                     </div>
                                   </div>

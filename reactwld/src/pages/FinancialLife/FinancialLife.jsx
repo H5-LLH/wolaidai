@@ -24,7 +24,7 @@ import icon11 from '../../assert/img/icon-11.png';
 //引入手机图片
 	import hw_mate20_pro from '../../assert/img/hw_mate20_pro.png';
 	import hw_mate20 from '../../assert/img/hw_mate20.png';
-	import iphonexs_max2 from '../../assert/img/hw_mate20.png';
+	import iphonexs_max2 from '../../assert/img/iphonexs_max2.png';
 	import iphonexs1 from '../../assert/img/iphonexs1.png';
 	import iphonexr2 from '../../assert/img/iphonexr2.png';
 	import path from '../../assert/img/path.png';
@@ -82,35 +82,35 @@ class FinancialLife extends Component {
 					],
 					phonePhoto:[
 						{
-							id:"hw_mate20_pro",
+							id:"104",
 							href:"https://mf.wolaidai.com/aif-lease/good/104?channel=wj_prm_zys_00010000",
 							name:"HUAWEI Mate 20 Pro",
 							oldPrice:"￥15/天",
 							price:"¥12.9/天"
 						},
 						{
-							id:"hw_mate20",
+							id:"103",
 							href:"https://mf.wolaidai.com/aif-lease/good/103?channel=wj_prm_zys_00010000",
 							name:"HUAWEI Mate 20",
 							oldPrice:"￥12/天",
 							price:"¥7.9/天"
 						},
 						{
-							id:"iphonexs_max2",
+							id:"96",
 							href:"https://mf.wolaidai.com/aif-lease/good/96?channel=wj_prm_zys_00010000",
 							name:"全新iPhone XS MAX",
 							oldPrice:"￥25/天",
 							price:"¥18/天"
 						},
 						{
-							id:"iphonexs1",
+							id:"99",
 							href:"https://mf.wolaidai.com/aif-lease/good/99?channel=wj_prm_zys_00010000",
 							name:"全新iPhone XS",
 							oldPrice:"21/天",
 							price:"¥16/天"
 						},
 						{
-							id:"iphonexr2",
+							id:"97",
 							href:"https://mf.wolaidai.com/aif-lease/good/97?channel=wj_prm_zys_00010000",
 							name:"全新iPhone XR",
 							oldPrice:"￥18/天",
@@ -119,42 +119,42 @@ class FinancialLife extends Component {
 					],
 					goodsArr:[
 						{
-							id:'hw_mate20x',
+							id:'108',
 							href:'https://mf.wolaidai.com/aif-lease/good/108?channel=wj_prm_zys_00010000',
 							name:'HUAWEI Mate 20X',
 							price:'¥9.9/天',
 							lease:'¥298×24期'
 						},
 						{
-							id:'vivo_x23',
+							id:'107',
 							href:'https://mf.wolaidai.com/aif-lease/good/107?channel=wj_prm_zys_00010000',
 							name:'vivo X23',
 							price:'¥6.2/天',
 							lease:'¥186×24期'
 						},
 						{
-							id:'iPhoneX',
+							id:'90',
 							href:'https://mf.wolaidai.com/aif-lease/good/90?channel=wj_prm_zys_00010000',
 							name:'iPhone X',
 							price:'¥13.9/天',
 							lease:'¥419×24期'
 						},
 						{
-							id:'oppo_r17',
+							id:'105',
 							href:'https://mf.wolaidai.com/aif-lease/good/105?channel=wj_prm_zys_00010000',
 							name:'OPPO R17 Pro',
 							price:'7.2/天',
 							lease:'¥216×24期'
 						},
 						{
-							id:'ipad_2018',
+							id:'116',
 							href:'https://mf.wolaidai.com/aif-lease/good/116?channel=wj_prm_zys_00010000',
 							name:'Apple ipad 2018',
 							price:'¥5.9/天',
 							lease:'¥178×24期'
 						},
 						{
-							id:'mac_pro',
+							id:'86',
 							href:'https://mf.wolaidai.com/aif-lease/good/86?channel=wj_prm_zys_00010000',
 							name:'MacBook Pro',
 							price:'¥18.3/天',
@@ -164,7 +164,10 @@ class FinancialLife extends Component {
 					// hour:'',
 					// minute:'',
 					// second:'',
+					needX:0//定义needX值用来存放当前元素的left和top值
+					
         }
+        			this.disX = 0//定义用来存放鼠标按下的地方距离元素上侧和左侧边界的值
     }
 
 ShowTime(){
@@ -177,8 +180,8 @@ ShowTime(){
 					endMonth+=1;
 				}
 				
-				console.log(endTime);
-				console.log(endMonth);
+				//console.log(endTime);
+				//console.log(endMonth);
 				let isTimeString = "2018/"+endMonth+"/"+endTime+" 00:00";//使倒计时时间永远为当前时间距离第二天零点的时间
 				let d2 = new Date(isTimeString);
 				this.makeTime = setInterval(()=>{
@@ -214,12 +217,68 @@ ShowTime(){
 // 						second:sec
 // 				})
 //   	}
-   
+
+
+//商品框移动
+Xmove(e) {
+
+		/*事件兼容*/
+		let event = e || window.event;
+		/*事件源对象兼容*/
+		let target = event.target || event.srcElement;
+		let save = this.state.needX;//解决第二次点击时需要加上上一次移动的距离
+		console.log(this.state.needX);
+		/*获取鼠标按下的地方距离元素左侧*/
+		this.disX = event.changedTouches[0].clientX - target.offsetLeft-save ;
+	
+		/*定义鼠标移动事件*/
+		//document.onTouchMove = this.fnMove.bind(this);
+		/*定义鼠标抬起事件*/
+		//document.onTouchend = this.fnUp.bind(this);
+		console.log(this.state.needX);
+	}
+	/*定义鼠标移动事件*/
+	fnMove(e){
+		/*事件兼容*/
+		
+		let event = e|| window.event ;
+		/*事件源对象兼容*/
+		let target = event.target || event.srcElement;
+		//console.log(event.changedTouches[0].clientX);
+		this.setState({
+			needX:event.changedTouches[0].clientX - this.disX ,
+			
+		});
+	}
+	fnUp(){
+
+		//document.onTouchMove = null;
+		//document.onTouchend = null;
+		if(this.state.needX>0){
+			this.setState({
+			needX:0
+			
+		});
+		}
+		if(this.state.needX<-410){
+			this.setState({
+			needX:-450
+			
+		});
+		}
+		this.onTouchMove = null;
+		this.onTouchEnd = null;
+	}
+
   render() {
     return (
 			<div className="home-wrap content-inner">
+
 				{/*轮播图*/}
 				<div style={{position:"relative"}}>
+
+			{/*轮播图*/}
+
 				<div className="banner-wrap">
 					
 						<div >
@@ -237,23 +296,27 @@ ShowTime(){
 						</div>
 					
 				</div>
-				{/*轮播图上的小图标*/}
+			{/*轮播图上的小图标*/}
 				<div className="hot-rent-box">
 						<div className="hot-rent-cont">
 							{(()=>{
 								return this.state.pictureS.map((item,index)=>{
 									return(
-									<a className="item" key={index} href={item.href} data-event="simple_enter_clk">
+									<Link to="/credit/index" className="item" key={index} href={item.href} data-event="simple_enter_clk">
 											<img src={PictureArr[index]} alt=""/>
 											<h3>{item.title}</h3>
-									</a>
+									</Link>
 									)
 								})
 							})()}
 						</div>
 				</div>
+
 				</div>
 				{/*大额简单贷*/}
+
+			{/*大额简单贷*/}
+
 				<div className="dejdd-wrap">   
 						<div className="rent-title">
 								<h2>大额简单贷</h2>
@@ -268,16 +331,16 @@ ShowTime(){
 						</ul>
 						<Link to={ this.state.runPhoto[1].href} data-event="simple_clk_uv" className="btn">立即申请</Link>
 				</div>
-				{/*手机分期*/}
+			{/*手机分期*/}
 				<div className="operation-bit">
 						<h2>
 								手机分期
 						</h2>
-						<a className="operation-bit-banner" data-event="enter_home" href="javascript: openTaoXinJi('https://mf.wolaidai.com/aif-lease/index.html?channel=wj_prm_zys_00010000&amp;');">
+						<Link to="/credit/index" className="operation-bit-banner" data-event="enter_home" >
 								<img src={operation} alt=""/>
-						</a>
+						</Link>
 				</div>
-				{/*手机秒杀*/}
+			{/*手机秒杀*/}
 				<div className="hot-mobile" >
 					<div className="hot-title">
 							<h2>手机秒杀</h2> 
@@ -286,14 +349,14 @@ ShowTime(){
 									<span style={{fontWeight: "900"}}>限时</span>  <span className="item" ref="hour1" id="hour1" >{/*{this.state.hour}*/}</span>:<span className="item" ref="minute1" id="minute1" >{/*{this.state.minute}*/}</span>:<span className="item" ref="second1" id="second1" >{/*{this.state.second}*/}</span>
 							</div>
 					</div>
-					{/*热门机型*/}	
+			{/*热门机型*/}	
 					<div className="swiper-container swiper-container-horizontal swiper-container-free-mode swiper-container-ios " id="hotMobile">
-			            <div className="swiper-wrapper" >
+			            <div className="swiper-wrapper"  style={{left:this.state.needX,}} onTouchStart={this.Xmove.bind(this)}  onTouchMove = {this.fnMove.bind(this)} onTouchEnd ={ this.fnUp.bind(this)}>
 											{(()=>{
 												
 												return this.state.phonePhoto.map((item,index)=>{
 														return(
-															<a className="swiper-slide swiper-slide-active" href={item.href}  key={index} data-event="hd_hw_mate20_pro_clk">
+															<Link to={`/Gdetail/?gdid=${item.id}`} className="swiper-slide swiper-slide-active"  key={index} data-event="hd_hw_mate20_pro_clk">
 																	<div className="top-part">
 																			<div className="top-tips">
 																					<img src={icon11} alt=""/>
@@ -312,17 +375,17 @@ ShowTime(){
 																			</div>
 																			<div className="price"> <span className="lineation">{item.oldPrice}</span>{item.price}</div>
 																	</div>
-															</a>
+															</Link>
 														)
 													})
 											})()}
-			                <a className="swiper-slide check-more" data-event="enter_home" href="javascript: openTaoXinJi('https://mf.wolaidai.com/aif-lease/index.html?channel=wj_prm_zys_00010000&amp;');">
+			                <Link to="/credit/index" className="swiper-slide check-more" data-event="enter_home">
 			                    <p>查看</p>
 			                    <p>更多</p>
 			                    <div className="bracket-write">
 			                        <img src={path} alt=""/>
 			                    </div>
-			                </a>
+			                </Link>
 			            </div>
 					</div>
 				</div>
@@ -336,20 +399,20 @@ ShowTime(){
 							{(()=>{
 								return this.state.goodsArr.map((item,index)=>{
 									return (
-											<a className="item" href={item.href} key={index} data-event="recommend_good1_clk">
+											<Link to={`/Gdetail/?gdid=${item.id}`} className="item" key={index} data-event="recommend_good1_clk">
 												<img src={goodsList[index]} alt="" className="hw-img"/>
 												<div className="good-name">{item.name}</div>
 												<div className="good-price">{item.price}</div>
 												<div className="good-lease">{item.lease}</div>
-											</a>
+											</Link>
 										)
 								})
 							})()}
 								
 						</div>
-						<a className="recommend-footer" data-event="recommend_entrance_clk" href="javascript: openTaoXinJi('https://mf.wolaidai.com/aif-lease/index.html?channel=wj_prm_zys_00010000&amp;');">
+						<Link to="/credit/index" className="recommend-footer" data-event="recommend_entrance_clk">
 								进入商城 <img src="home/img/11/path@2x.png" alt=""/>
-						</a>
+						</Link>
 				</div>
 			</div>
     );
@@ -361,4 +424,7 @@ ShowTime(){
     	clearInterval(this.makeTime);
     	}
 }
+
+
+
 export default FinancialLife;
