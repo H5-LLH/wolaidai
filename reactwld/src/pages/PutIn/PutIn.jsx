@@ -226,5 +226,10 @@ times(index){
       </div>
         );
     }
+    componentDidMount() {
+        this.money();
+    }
 }
+
+
 export default PutIn;
