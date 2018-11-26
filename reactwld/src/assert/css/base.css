@@ -34,7 +34,7 @@
     color: #333;
     font-size: .28rem;
     display: inline-block;
-    line-height: 3rem;
+    line-height: .94rem;
     margin-right: .2rem
 }
 
@@ -42,8 +42,8 @@
     background-color: #fff;
     position: relative;
     border-bottom: .01rem solid #ececec;
-    height: 1.94rem;
-    line-height: 2.84rem
+    height: .94rem;
+    line-height: .94rem
 }
 
 .Input___1iYS0 {
@@ -194,8 +194,8 @@
 
 .picker___39CqX {
     width: 100%;
-    height: 1.94rem;
-    line-height: 2  .94rem;
+    height: .94rem;
+    line-height: .94rem;
     padding-left: .2rem;
     font-size: .32rem;
     color: #333
@@ -222,8 +222,8 @@
     text-align: center;
     border-bottom: .01rem solid #eee;
     color: #999;
-    height: 1.9rem;
-    line-height: 1.9rem;
+    height: .9rem;
+    line-height: .9rem;
     font-family: PingFangSC-Regular;
     font-size: .14rem;
     letter-spacing: 0
@@ -1498,7 +1498,7 @@
 }
 
 .Installment___2xwWU .Installment___3aUCw {
-    height: 1.3rem;
+    height: .3rem;
     padding-top: .05rem;
     color: #ff5d3d;
     font-size: .24rem
@@ -1510,7 +1510,7 @@
 }
 
 .Installment___2xwWU .Installment___1w5hE .Installment___2lJTr .Installment____T8JD label {
-    width: 2.35rem;
+    width: 1.35rem;
     color: #333;
     font-size: .32rem;
     margin-right: 0
@@ -1527,8 +1527,7 @@
     -ms-flex: 1;
     flex: 1;
     text-align: right;
-    padding-right: 1.26rem;
-    line-height: 3rem;
+    padding-right: .26rem
 }
 
 .Installment___2xwWU .Installment___1w5hE .Installment___2lJTr .Installment____T8JD .Installment___2Zsy1 .Installment___1dp63 div[data-role=xlib-input] {
@@ -1586,10 +1585,10 @@
 }
 
 .Installment___2xwWU div.Installment___20BUa {
-    font-size: .8rem;
+    font-size: .26rem;
     color: #999;
     text-align: center;
-    margin-top: 1.35rem
+    margin-top: .35rem
 }
 
 .Installment___2xwWU div.Installment___20BUa span {

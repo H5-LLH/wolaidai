@@ -1,6 +1,6 @@
  .m-page {
       background-image: url("../../assert/img/bg-dejdd1.jpg");
-      background-size: 20.5rem 31.06rem;
+      background-size: 7.5rem 13.06rem;
       background-position: top center;
       background-repeat: no-repeat;
       overflow: hidden;
@@ -21,7 +21,7 @@
     }
 
     .m-box-apply {
-      margin-top: 19.5rem;
+      margin-top: 8.5rem;
       text-align: center;
     }
 
@@ -52,8 +52,8 @@
      background-image: url("../../assert/img/box1.png");
       background-repeat: no-repeat;
       background-size: 90%;
-      height: 5.3rem;
-      margin: 0 0.75rem 0.3rem 2.75rem;
+      height: 1.3rem;
+      margin: 0 -0.25rem 0.3rem 2.75rem;
       padding: 0.7rem 0;
       box-sizing: border-box;
       padding-bottom: 1.2rem;
@@ -77,7 +77,7 @@
     }
 
     .m-form-row {
-      height: 3rem;
+      height: 1rem;
       padding: 0.12rem   0.5rem;
       border-bottom: 1px solid #fff;
     }
@@ -89,7 +89,7 @@
     .m-form-row input {
       width: 9.2rem;
       height: 100%;
-      font-size: 1rem;
+    
       outline: none;
       border: none;
       background: transparent;
@@ -112,17 +112,17 @@
 
     .m-icon {
       margin-right: 1.3rem;
-      height: 1rem;
-      width: 0.8rem;
+      height: 0.4rem;
+      width: 0.3rem;
     }
 
     .btn-send-code {
-      width: 6rem;
+      width: 2rem;
       border-radius: 30px;
-      height: 1.5rem;
+      height:0.5rem;
       line-height: 0.5rem;
       background: #fed8de;
-      font-size: 0.28rem;
+      font-size: 0.3rem;
       color: #fc496f;
       border: none;
       -webkit-box-shadow: none;
@@ -135,17 +135,17 @@
       background-repeat: no-repeat;
       background-position-y: bottom;
       width: 100%;
-      height: 3.1rem;
+      /*height: 3.1rem;*/
       background-color: transparent;
       border: none;
-      margin-top: 1.4rem;
+      margin-top: .4rem;
       color: #c0051c;
-      font-size: 1.5rem;
+      font-size: .5rem;
       outline: none;
       -webkit-box-shadow: none;
       box-shadow: none;
       letter-spacing: 3px;
-      line-height: 3.1rem;
+      line-height: .1rem;
     }
 
     .btn-apply {

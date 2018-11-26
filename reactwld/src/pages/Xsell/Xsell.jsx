@@ -51,14 +51,14 @@ login(){
 }
   render() {
     return (
-        <div className="m-page" style={{minHeight: "1136px"}}>
+        <div className="m-page" >
             <div className="m-box-apply"> 
                 {(()=>{
                     if(this.state.isShow){
                         return (
                                 <div className="m-box-apply-1" id="apply1" onClick={this.toggleShow.bind(this)}>
                                   <div  style={{marginBottom: "0.2rem"}}>
-                                    <img src={applyQuota1} style={{width: "15rem",height:"8.5rem" }}/>
+                                    <img src={applyQuota1} style={{width: "8rem",height:"4.5rem" }}/>
                                   </div>
                                   <div className="m-box-word2">
                                     <p>1. 更高额度，最高可提至5万</p>
@@ -80,12 +80,12 @@ login(){
                                     <div className="m-form-row m-flex">
                                       <img className="m-icon" src={lockIcon}/>
                                       <input type="tel" className="m-radius0 m-square-input border-box input-font" id="verifyCode" name="verifyCode" placeholder="输入验证码" ref="verifyCode"/>
-                                      <button className="btn-send-code" ref="btn" onClick={this.newNumber.bind(this)}>获取验证码</button>
+                                      <button className="btn-send-code" ref="btn" style={{marginTop: "7px"}} onClick={this.newNumber.bind(this)}>获取验证码</button >
                                     </div>
                                     <div id="error-msg" className="m-tip" style={{color: "#fff"}}></div>
                                     <div className="m-form-row no-b" style={{height: "2rem"}}>
                                       <a href = {'http://localhost:3000/#/putIn'}>
-                                        <button className="btn-login" onClick={this.login.bind(this)}>立即领取</button>
+                                        <button className="btn-login" style={{margin:0}} onClick={this.login.bind(this)}>立即领取</button>
                                       </a>
                       
                                     </div>
