@@ -31,7 +31,7 @@ class Glist extends Component {
 	}
 	
 	ClassifyLoad(){
-	
+	if(this.props.listid!==undefined){
 	React.axios({
 		method: 'get',
 		url: "https://mf.wolaidai.com/lease/api/v1/goods/list/"+this.props.listid+"?page=1&pageSize=10"
@@ -45,6 +45,7 @@ class Glist extends Component {
 	}).catch((error) => {
 		console.log(error)
 	})
+	}
 	}
 		
 	componentDidMount() {
@@ -71,7 +72,7 @@ class Glist extends Component {
 		})
 		this.ClassifyLoad();
 		},10)
-		
+
 	}
 	
 	
@@ -90,7 +91,7 @@ class Glist extends Component {
 									<div className="home-info">
 									<span className="cut-price-container">
 									<span className="home-name cut-price">{item.spuName}</span>
-									<span className="cut">砍</span>
+									<span className="cut" style={{fontSize:"30%"}}>砍</span>
 									</span>
 									<span className="home-month">月供最低约<span className="home-currency">￥</span>
 									<span className="home-price">{`${item.rent}.00`}</span>
