@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom"; //跳转路由
+//引入轮播图组件
+import { Carousel } from 'antd';
 import './PutIn.css';
 import '../../assert/css/base.css';
 //引入顶部图片
@@ -21,7 +23,49 @@ class PutIn extends Component {
             Time:["6期","9期","12期",],
             Money1:0,
             Money2:"",
-            tit:""
+            tit:"",
+            message:[
+              {
+                add:"合肥",
+                name:"夏先生",
+                money:"19300元"
+              },
+              {
+                add:"柳州",
+                name:"陆先生",
+                money:"24300元"
+              },
+              {
+                add:"南京",
+                name:"候先生",
+                money:"14500元"
+              },
+              {
+                add:"江苏",
+                name:"陆先生",
+                money:"32300元"
+              },
+              {
+                add:"浙江",
+                name:"李先生",
+                money:"26100元"
+              },
+              {
+                add:"天津",
+                name:"黄先生",
+                money:"43000元"
+              },
+              {
+                add:"南宁",
+                name:"韦先生",
+                money:"24200元"
+              },
+              {
+                add:"山东",
+                name:"梁先生",
+                money:"50000元"
+              },
+            ]
         }
     }
 //申请金额，每期还款函数
@@ -97,11 +141,20 @@ times(index){
               <div className="amount-box">
               {/*通知轮转*/}
                 <div className="notification">
-                  <div className="Broadcasts___sIH1O" style={{height: "1.3rem"}}>
-                    <div className="Broadcasts___f8p0b" style={{top: "0rem", height: "1.3rem"}}>
-                      <div className="Broadcasts___kQ-FH" style={{height: "1.3rem", lineHeight: "1.3rem"}}>
-                        <img src={notice} alt=""/>来自合肥的夏先生已成功放款<span>19300元</span>
-                      </div>
+                  <div className="Broadcasts___sIH1O" style={{height: "0.5rem"}}>
+                    <div className="Broadcasts___f8p0b" style={{top: "0rem", height: "0.5rem"}}>
+                      <Carousel vertical autoplay>
+                        {(()=>{
+                          return this.state.message.map((item,index)=>{
+                            return (
+                              <div className="Broadcasts___kQ-FH" style={{height: "0.5rem", lineHeight: "0.5rem"}}>
+                                  <img src={notice} alt=""/>来自{item.add}的{item.name}已成功放款
+                                  <span>{item.money}</span>
+                              </div>
+                              )
+                          })
+                        })()}
+                    </Carousel>
                     </div>
                   </div>
                 </div>
@@ -133,7 +186,7 @@ times(index){
                         return(
                                 <div className="Installment___3aUCw">
                                   <p>
-                                    <span style={{marginRight: "1.06rem"}}></span>
+                                    <span style={{marginRight: ".06rem"}} className="tutu icon-gantanhao"></span>
                                     您最多可借50000元
                                   </p>
                                 </div>
@@ -152,6 +205,7 @@ times(index){
                                 <label>借多久</label>
                                   <div className="Installment___1dp63" onClick={this.period.bind(this)}>
                                     <div className="picker___39CqX">{this.state.Time[this.state.Idex]}
+                                       <i className="tutu icon-arr-right-red"></i>
                                       <div className={this.state.isShowPeriod?"Modal___1uYAl Modal___1gdzR":"Modal___1uYAl Modal___1S-qo"} id="modal">
                                         <div className="picker___2sNPZ">
                                           <ul>
@@ -209,8 +263,10 @@ times(index){
             {/*卡片内容*/}
               <div className="wrap-box">
                 <div className="wrap-item">
-                  <img src={loan} alt=""/>
-                  <div>我的借款</div>
+                   <a href = {'http://localhost:3000/#/myBorrow'} style={{textDecoration: "none"}}>
+                    <img src={loan} alt=""/>
+                    <div style={{color:" #333"}}>我的借款</div>
+                  </a>
                 </div>
                 <div className="wrap-item">
                   <img src={coupon} alt=""/>
