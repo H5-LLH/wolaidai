@@ -17,7 +17,8 @@ class Gfoot extends Component {
 			{
 				title:"我的订单",
 				imgPath:"https://mf.wolaidai.com/aif-lease/file/58ae73537bfd5221bfa1da3f518b9a91.png",
-				path:"/credit/classify"
+				path:"/credit/Glogin"
+
 			},
 			{
 				title:"账户",
