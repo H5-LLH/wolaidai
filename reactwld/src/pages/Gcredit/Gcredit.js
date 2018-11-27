@@ -12,6 +12,7 @@ import { Route } from "react-router-dom";
 import Gindex from "../Gindex/Gindex";
 import Gclassify from "../Gclassify/Gclassify";
 import Gaccount from "../Gaccount/Gaccount";
+import Glogin from "../Glogin/Glogin";
 //import { Link } from "react-router-dom";
 class Gcredit extends Component {
 	constructor(props) {
@@ -26,6 +27,7 @@ class Gcredit extends Component {
 		<div>
 			<Route path="/credit/index" component={Gindex} />
 			<Route path="/credit/classify" component={Gclassify} />
+			<Route path="/credit/Glogin" component={Glogin} />
 			<Route path="/credit/users" component={Gaccount} />
 			<Gfoot />
 		</div>

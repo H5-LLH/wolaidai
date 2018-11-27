@@ -2,7 +2,7 @@ import React, {
 	Component
 } from 'react';
 
-import Gfoot from '../../components/Gfoot/Gfoot';
+//import Gfoot from '../../components/Gfoot/Gfoot';
 class Gaccount extends Component {
 	constructor(props) {
 		super(props);
