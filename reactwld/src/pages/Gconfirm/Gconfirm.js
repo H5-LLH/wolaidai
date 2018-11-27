@@ -47,7 +47,7 @@ class Gconfirm extends Component {
 		return(
 			<div>
 				<div className="confirm-container">
-							<div className="goodgadget-container"><img src={this.state.confirmImgUrl} className="goodgadget-pic" />
+							<div className="goodgadget-container"><img src={this.state.confirmImgUrl} className="goodgadget-pic" alt=""/>
 								<div className="goodgadget-type"><span className="goodgadget-name">{this.props.confirmArr.skuName}</span>
 								<span className="goodgadget-params">
 								规格：{this.props.confirmArr.attributeOptions["颜色"]}/{this.props.confirmArr.attributeOptions["内存"]}/{this.props.confirmArr.attributeOptions.rentTerm}个月租满即送/租完即送</span>
@@ -73,7 +73,7 @@ class Gconfirm extends Component {
 							<div className="gap-20"></div>
 							<div className="confirm-footer">
 								<div className="confirm-agree">
-								<img src="https://mf.wolaidai.com/aif-lease//file/e294924c007a325875ef143e64f21733.png" className={this.state.confirmShow? "confirm-checked" : "confirm-checked hidden"} onClick={this.confirmClick.bind(this)} />
+								<img src="https://mf.wolaidai.com/aif-lease//file/e294924c007a325875ef143e64f21733.png" className={this.state.confirmShow? "confirm-checked" : "confirm-checked hidden"} onClick={this.confirmClick.bind(this)} alt=""/>
 								{
 									(()=>{
 										if(this.state.confirmShow){
